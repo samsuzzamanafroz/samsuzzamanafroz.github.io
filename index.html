@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Samsuzzaman Afroz - Gravitational Wave Researcher</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<nav>
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About Me</a></li>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#visualizations">Visualizations</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#publications">Publications</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="sections/OtherMe.html" target="_blank">Other Me</a></li>
+    </ul>   
+</nav>
+
+<!-- Load sections -->
+<div id="home"></div>
+<div id="about"></div>
+<div id="research"></div>
+<div id="visualizations"></div>
+<div id="skills"></div>
+<div id="publications"></div>
+<div id="contact"></div>
+<div id="OtherMe"></div>
+
+<script>
+async function loadSection(id, file) {
+    const res = await fetch(file);
+    document.getElementById(id).innerHTML = await res.text();
+}
+
+loadSection("home", "sections/home.html");
+loadSection("about", "sections/about.html");
+loadSection("research", "sections/research.html");
+loadSection("visualizations", "sections/visualization.html");
+loadSection("skills", "sections/skills.html");
+loadSection("publications", "sections/publications.html");
+loadSection("contact", "sections/contact.html");
+</script>
+
+</body>
+</html>

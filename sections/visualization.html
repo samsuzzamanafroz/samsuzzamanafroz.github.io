@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Samsuzzaman Afroz - Gravitational Wave Researcher</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <!-- External CSS -->
+    <link rel="stylesheet" href="../style.css">
+    
+    <!-- Page-specific inline styles -->
+    <style>
+        /* Override only for this page */
+        #visualizations {
+            background: #ffffff;
+            color: #000000;
+            padding: 6rem 2rem;
+        }
+        
+        #visualizations h2 {
+            color: #000000;
+        }
+        
+        #visualizations h2:after {
+            background: var(--accent);
+        }
+        
+        #visualizations .section-intro {
+            color: #000000;
+        }
+        
+        #visualizations .visualization-highlight {
+            background: #000000;
+            max-width: 1400px;
+            margin: 3rem auto;
+            padding: 2rem;
+        }
+        
+        #visualizations .viz-full-image {
+            width: 100%;
+            height: auto;
+            max-width: 100%;
+            display: block;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+        
+        #visualizations .viz-description h3 {
+            color: #ffffff;
+        }
+        
+        #visualizations .viz-description p {
+            color: #ffffff;
+        }
+        
+        #visualizations .btn-primary {
+            background: #e94560;
+            color: #ffffff;
+            border: 2px solid #e94560;
+        }
+        
+        #visualizations .btn-primary:hover {
+            background: #d63851;
+            color: #ffffff;
+            border-color: #d63851;
+        }
+        
+        #visualizations .viz-feature-card {
+            background: #ffffff;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        
+        #visualizations .viz-feature-card h3 {
+            color: #1a1a2e;
+        }
+        
+        #visualizations .viz-feature-card p {
+            color: #2d2d2d;
+        }
+        
+        #visualizations .viz-features {
+            max-width: 1400px;
+            margin: 3rem auto 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Visualizations Section -->
+    <section id="visualizations">
+        <h2>Data Visualizations</h2>
+        <p class="section-intro">
+            I love creating beautiful and informative visualizations of gravitational-wave data and astrophysical phenomena. 
+            These plots help communicate complex scientific concepts and showcase the power of gravitational-wave astronomy.
+        </p>
+
+        <div class="visualization-highlight">
+            <img src="../plots/GWTC4CountYearBackground.png"
+                alt="Gravitational Wave Detections Catalog"
+                class="viz-full-image">
+
+            <div class="viz-description">
+                <p>
+                    This visualization presents gravitational-wave detections from the LIGO–Virgo–KAGRA (LVK) observing runs between 2015 and 2024. 
+                    Each event corresponds to a compact binary merger, plotted versus the time of observation (horizontal axis) and the component masses (vertical axis, 
+                    in solar masses). For each detection, the two markers connected by a vertical line represent the individual masses of the binary components, 
+                    illustrating the mass ratio of the system. Events are color-coded by their luminosity distance, highlighting sources ranging from nearby mergers to events at cosmological distances. 
+                    The upper axis shows the cumulative detection number, emphasizing the rapid growth of the gravitational-wave catalog as detector sensitivity improved across observing runs.
+                </p>
+
+                <a href="../visualizationfullpage.html" class="btn btn-primary">
+                    Explore Detailed Catalog & Visualizations
+                </a>
+            </div>
+        </div>
+
+    </section>
+</body>
+</html>
