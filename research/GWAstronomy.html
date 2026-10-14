@@ -3,95 +3,655 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gravitational-Wave Astronomy - Samsuzzaman Afroz</title>
-    
-    <!-- Google Fonts -->
+    <title>Gravitational-Wave Astrophysics | Samsuzzaman Afroz</title>
+    <meta name="description" content="What gravitational-wave catalogues reveal about binary black holes: how their masses evolve with redshift, their delay times and their spins.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
-    
-    <!-- External CSS -->
-    <link rel="stylesheet" href="../style.css">
-    <link rel="stylesheet" href="../research-detail.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+    <link rel="stylesheet" href="../assets/site.css?v=56">
+    <script>try { if (localStorage.getItem('theme') === 'dark') document.documentElement.setAttribute('data-theme', 'dark'); } catch (e) {}</script>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav>
-        <ul>
-            <li><a href="../index.html#home">Home</a></li>
-            <li><a href="../index.html#about">About</a></li>
-            <li><a href="../index.html#research">Research</a></li>
-            <li><a href="../visualizations.html">Visualizations</a></li>
-            <li><a href="../index.html#skills">Skills</a></li>
-            <li><a href="../index.html#publications">Publications</a></li>
-            <li><a href="../index.html#contact">Contact</a></li>
-        </ul>
-    </nav>
 
-    <!-- Research Header -->
-    <section class="research-header">
-        <div class="container">
-            <h1>Gravitational-Wave Astronomy</h1>
+<nav class="site-nav solid">
+    <div class="container">
+        <a class="brand" href="../index.html">S. Afroz<span>.</span></a>
+        <div class="nav-right">
+            <ul class="nav-links">
+                <li><a href="../index.html#about">About</a></li>
+                <li><a href="../index.html#research" class="active">Research</a></li>
+                <li><a href="../visualizations.html">Visualizations</a></li>
+                <li><a href="../index.html#publications">Publications</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+            </ul>
+            <button class="theme-toggle" type="button" aria-label="Switch between light and dark mode" title="Light / dark mode">
+                <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+                <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+            </button>
+            <button class="nav-toggle" aria-label="Open menu">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
         </div>
-    </section>
+    </div>
+</nav>
 
-    <!-- Main Content -->
-    <article class="research-content">
-        <div class="container">
-            <section class="intro-section">
-                <h2>Overview</h2>
+<header class="paper-hero v2">
+    <div class="container">
+        <div class="crumbs"><a href="../index.html">Home</a> / <a href="../index.html#research">Research</a> / Gravitational-wave astrophysics</div>
+        <div class="eyebrow">Astrophysics · Binary black hole populations · LIGO–Virgo–KAGRA</div>
+        <h1>What the black holes are <em>telling us</em></h1>
+        <p class="lede">
+            Every binary black hole that LIGO, Virgo and KAGRA detect carries a record of how it was born: the masses of its two
+            black holes, how fast they spin, and how long the pair took to merge after its stars formed. One event says little on
+            its own, but a catalogue of hundreds of them starts to reveal the population behind them, and with it the lives and
+            deaths of massive stars across cosmic time.
+        </p>
+        <p class="lede">
+            This line of my research reads that record, one property at a time. Each chapter below asks a separate question about the
+            population, using the public LIGO–Virgo–KAGRA catalogues and methods that correct for which black holes the detectors
+            can and cannot see.
+        </p>
+    </div>
+</header>
+
+<div class="container">
+    <div class="paper-layout v2">
+        <aside class="toc">
+            <div class="label">On this page</div>
+            <a href="#chapters">The chapters</a>
+            <a href="#mass">1 · Black hole mass</a>
+            <a href="#mass-method">&nbsp;&nbsp;&nbsp;The method</a>
+            <a href="#mass-data">&nbsp;&nbsp;&nbsp;The data</a>
+            <a href="#mass-results">&nbsp;&nbsp;&nbsp;Results</a>
+            <a href="#mass-meaning">&nbsp;&nbsp;&nbsp;What it means</a>
+            <a href="#delay">2 · Delay times</a>
+            <a href="#delay-method">&nbsp;&nbsp;&nbsp;The method</a>
+            <a href="#delay-sfr">&nbsp;&nbsp;&nbsp;Star formation</a>
+            <a href="#delay-results">&nbsp;&nbsp;&nbsp;Results</a>
+            <a href="#delay-pl">&nbsp;&nbsp;&nbsp;Power laws</a>
+            <a href="#delay-robust">&nbsp;&nbsp;&nbsp;Robustness</a>
+            <a href="#delay-meaning">&nbsp;&nbsp;&nbsp;What it means</a>
+            <a href="#spin">3 · Black hole spin</a>
+        </aside>
+
+        <article class="article v2">
+            <section id="chapters" class="reveal" style="padding-bottom: 0;">
+                <div class="chapters">
+                    <a class="chapter-card" href="#mass">
+                        <span class="ch-num">Chapter 1</span>
+                        <h3>Black hole mass</h3>
+                        <p>Does the mass distribution of binary black holes change with redshift? A non-parametric reconstruction from GWTC-3 and GWTC-4.</p>
+                        <span class="ch-status">Read now</span>
+                    </a>
+                    <a class="chapter-card" href="#delay">
+                        <span class="ch-num">Chapter 2 · Flagship project</span>
+                        <h3>Delay times</h3>
+                        <p>How long after their stars form do black hole binaries merge? Every possible shape, tested on a grid against GWTC-5.0.</p>
+                        <span class="ch-status">Read now</span>
+                    </a>
+                    <a class="chapter-card is-soon" href="#spin">
+                        <span class="ch-num">Chapter 3</span>
+                        <h3>Black hole spin</h3>
+                        <p>What the spins of merging black holes reveal about how the binaries formed. Work in progress.</p>
+                        <span class="ch-status soon">Details coming soon</span>
+                    </a>
+                </div>
+            </section>
+
+            <!-- ================= CHAPTER 1: MASS ================= -->
+            <section id="mass" class="reveal">
+                <div class="chapter-head"><span class="ch-num">Chapter 1 · Black hole mass</span></div>
+                <h2 class="chapter-title">Is the black hole mass function changing over cosmic time?</h2>
                 <p>
-                    This section will be updated soon.
+                    The masses of binary black holes are shaped by the stars that made them. How much mass a massive star loses to winds
+                    before it collapses depends strongly on its <b>metallicity</b>, the fraction of elements heavier than helium. In the
+                    early Universe, stars were more metal-poor, lost less mass and could leave behind heavier black holes. If that is
+                    what happens, the distribution of black hole masses, the <b>mass function</b>, should change with redshift: heavy
+                    black holes should become relatively more common the further back in time we look.
+                </p>
+                <p>
+                    This leads to two open questions. Does a single mass distribution describe binary black holes at all redshifts, or
+                    only within a limited range? And if the distribution does evolve, how and where in mass does it change? Answering
+                    them is difficult, because we cannot predict the mass function from first principles and because the detectors
+                    see heavy, nearby binaries much more easily than light, distant ones.
                 </p>
             </section>
 
-            <section class="content-section">
-                <h2>Current Challenges</h2>
-                <p>This part will be updated soon.</p>
-
-            </section>
-
-            <section class="content-section">
-                <h2>My Research Contributions</h2>
-                <p>This part will be updated soon.</p>
-            </section>
-
-
-            <section class="content-section">
-                <h2>Future Prospects</h2>
-                <p>This part will be updated soon.</p>
-            </section>
-
-            <section class="related-publications">
-                <h2>Related Publications</h2>
-                <!-- <div class="pub-list">
-                    <div class="pub-item">
-                        <h3>Multimessenger cosmology with LIGO-Virgo-KAGRA observations and DESI galaxies</h3>
-                        <p>S. Afroz, S. Mukherjee | arXiv:2407.09262</p>
-                        <a href="https://arxiv.org/abs/2407.09262" target="_blank" class="btn-link">Read Paper →</a>
-                    </div>
-                    <div class="pub-item">
-                        <h3>A Model-independent Precision Test of General Relativity using LISA Bright Standard Sirens</h3>
-                        <p>S. Afroz, S. Mukherjee | arXiv:2406.08791</p>
-                        <a href="https://arxiv.org/abs/2406.08791" target="_blank" class="btn-link">Read Paper →</a>
-                    </div>
-                </div> -->
-            </section>
-
-            <section class="cta-section">
-                <h2>Interested in Collaborating?</h2>
+            <section id="mass-method" class="reveal">
+                <h2><span class="num">1.1 — The method</span>Letting the data describe the evolution</h2>
                 <p>
-                    I am always happy to discuss. Feel free to reach out!
+                    Most earlier studies assumed a specific shape for the mass function, such as a power law with a peak, and let only a
+                    few parameters change with redshift. That can hide features nobody thought to model. We took a <b>non-parametric</b>
+                    approach instead: we describe the joint distribution of mass and redshift as a smooth expansion around a reference
+                    redshift of <i>z</i> = 0.25, keeping terms up to second order.
                 </p>
-                <a href="../index.html#contact" class="btn btn-primary">Get in Touch</a>
+                <div class="eq"><span class="md">p(m,z) \approx p_0(m) + p_1(m)\,(z-z_{\rm ref}) + p_2(m)\,(z-z_{\rm ref})^2</span></div>
+                <p>
+                    Each term has a direct meaning, and each is measured separately in every mass bin, so the data decide where in mass
+                    any evolution happens:
+                </p>
+                <div class="explain-grid">
+                    <div class="explain">
+                        <h4><i>p</i><sub>0</sub>(<i>m</i>): the mass function today</h4>
+                        <p>The shape of the black hole mass distribution at the reference redshift, the baseline against which any change
+                        is measured.</p>
+                    </div>
+                    <div class="explain">
+                        <h4><i>p</i><sub>1</sub>(<i>m</i>): linear evolution</h4>
+                        <p>Whether black holes of a given mass were more common (positive) or less common (negative) at higher redshift.
+                        Its size tells us how strong the evolution is.</p>
+                    </div>
+                    <div class="explain">
+                        <h4><i>p</i><sub>2</sub>(<i>m</i>): curvature</h4>
+                        <p>Whether that change speeds up or slows down with redshift. This term allows non-monotonic behaviour, where a
+                        trend strengthens or saturates.</p>
+                    </div>
+                    <div class="explain">
+                        <h4>Selection effects, handled</h4>
+                        <p>Detection probability is measured from the public LIGO–Virgo–KAGRA injection campaigns and built into a
+                        hierarchical Bayesian likelihood, together with the full measurement uncertainty of every event.</p>
+                    </div>
+                </div>
             </section>
-        </div>
-    </article>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2026 Samsuzzaman Afroz. All rights reserved.</p>
-        <p style="margin-top: 0.5rem; font-size: 0.9rem;">PhD Researcher | Tata Institute of Fundamental Research, Mumbai</p>
-    </footer>
+            <section id="mass-data" class="reveal">
+                <h2><span class="num">1.2 — The data</span>Binary black holes in the mass–redshift plane</h2>
+                <p>
+                    We used the publicly released parameter-estimation samples of the binary black hole mergers in the GWTC-3 and GWTC-4
+                    catalogues. For every event, each posterior sample of the source-frame component masses and luminosity distance was
+                    converted to redshift (assuming Planck 2018 cosmology), so each event becomes a cloud of possible positions in the
+                    mass–redshift plane. Stacking all the events gives the picture below.
+                </p>
+                <figure class="fig">
+                    <div class="fig-row">
+                        <img src="figures/gwastro/PrimaryMassdata.png" alt="Mass–redshift distribution of primary black hole masses in GWTC-4">
+                        <img src="figures/gwastro/SecondaryMassdata.png" alt="Mass–redshift distribution of secondary black hole masses in GWTC-4">
+                    </div>
+                    <figcaption>
+                        <b>Where the observed black holes sit in mass and redshift.</b> The combined posterior samples of all events,
+                        for the heavier (primary, left) and lighter (secondary, right) black hole in each binary, over masses of 5–100
+                        solar masses and redshifts up to 1.2. Colour shows probability density on a logarithmic scale. Heavier black
+                        holes reach larger redshifts, but this alone does not prove evolution: heavier binaries are louder and can be
+                        detected further away, so a selection effect produces the same trend even if the population never changes.
+                    </figcaption>
+                </figure>
+                <p>
+                    That is exactly why the correction for detector sensitivity matters. An apparent trend between mass and distance can
+                    come from two sources that are not exclusive: a pure selection bias, because heavy binaries are visible further out,
+                    or a genuine change in the population, for example driven by metallicity. Only after correcting for what the
+                    detectors can see can the two be told apart.
+                </p>
+            </section>
+
+            <section id="mass-results" class="reveal">
+                <h2><span class="num">1.3 — Results</span>Heavier black holes show a mild trend with redshift</h2>
+                <p>
+                    We ran the analysis in the mass–redshift plane for masses of 10–80 solar masses and redshifts up to 1, with two
+                    different bin sizes to check that the result does not depend on how the data are divided. The pattern is the same
+                    each time. Below about <b>30 solar masses</b> the linear term is consistent with zero: light black holes show no
+                    measurable evolution. Above roughly <b>40 solar masses</b> it moves systematically to positive values, a mild hint
+                    that massive black holes were relatively more common at earlier cosmic times. The quadratic term stays consistent
+                    with zero everywhere, so a simple linear trend is enough up to redshift about 1.
+                </p>
+                <div class="fig" data-tabs style="margin: 30px 0;">
+                    <figure class="fig" style="margin:0;">
+                        <div class="tabs" role="tablist">
+                            <button role="tab" aria-selected="true">Primary mass · 10 M☉ bins</button>
+                            <button role="tab" aria-selected="false">Primary mass · 5 M☉ bins</button>
+                            <button role="tab" aria-selected="false">Secondary mass · 10 M☉ bins</button>
+                            <button role="tab" aria-selected="false">Secondary mass · 5 M☉ bins</button>
+                        </div>
+                        <div class="tab-panel"><img src="figures/gwastro/primary_massLB.png" alt="Evolution coefficients for primary mass, 10 solar-mass bins"></div>
+                        <div class="tab-panel" hidden><img src="figures/gwastro/primary_massHB.png" alt="Evolution coefficients for primary mass, 5 solar-mass bins"></div>
+                        <div class="tab-panel" hidden><img src="figures/gwastro/secondary_massLB.png" alt="Evolution coefficients for secondary mass, 10 solar-mass bins"></div>
+                        <div class="tab-panel" hidden><img src="figures/gwastro/secondary_massHB.png" alt="Evolution coefficients for secondary mass, 5 solar-mass bins"></div>
+                        <figcaption>
+                            <b>How the mass function changes with redshift, mass bin by mass bin.</b> Each view shows the three measured
+                            coefficients with 1σ error bars. <i>Left:</i> the baseline mass distribution log <i>p</i><sub>0</sub>, falling
+                            steeply towards high masses. <i>Middle:</i> the linear evolution <i>p</i><sub>1</sub>, consistent with zero below
+                            about 30 M☉ and rising to positive values for heavier black holes. <i>Right:</i> the quadratic term
+                            <i>p</i><sub>2</sub>, consistent with zero in every bin. Use the buttons to switch between the primary (heavier)
+                            and secondary (lighter) black hole and between 10 M☉ and 5 M☉ bins; the finer bins are noisier but show the same
+                            trend. The secondary mass follows the primary with larger uncertainties.
+                        </figcaption>
+                    </figure>
+                </div>
+                <p>
+                    These results fit between earlier findings from GWTC-3 alone, which ranged from hints that the characteristic mass
+                    increases with redshift to results consistent with no evolution at all. Adding GWTC-4, with its larger sample and
+                    greater redshift reach, lets a mass-resolved analysis show <em>where</em> in mass any evolution is concentrated:
+                    among the heavy black holes, not the light ones.
+                </p>
+            </section>
+
+            <section id="mass-meaning" class="reveal">
+                <h2><span class="num">1.4 — What it means</span>A fingerprint of metallicity</h2>
+                <p>
+                    The mass-dependent pattern matches what metallicity-driven evolution predicts. At high redshift, metal-poor stars have
+                    weaker winds, keep more of their mass and can leave heavier black holes, so the massive end of the mass function
+                    grows with redshift. Lighter black holes, which form through more robust core-collapse channels, are less sensitive
+                    to their environment and show no measurable change. The gradual, linear form of the trend points to a slow change in
+                    the chemical make-up of the Universe rather than an abrupt transition. It also agrees with my phase-space analyses,
+                    which indicate a distinct population of binary black holes above about 45 solar masses.
+                </p>
+                <p>
+                    The evidence is still mild, limited by the number of heavy, distant events. Next-generation detectors such as Cosmic
+                    Explorer and the Einstein Telescope will detect binary black holes out to much higher redshift, and the same
+                    non-parametric method will then be able to measure higher-order features of the evolution precisely, linking
+                    gravitational waves to stellar evolution and the chemical history of galaxies.
+                </p>
+                <div class="pub" style="margin-top: 26px;">
+                    <div>
+                        <h4><a href="https://arxiv.org/abs/2509.25356" target="_blank">The Non Parametric Reconstruction of Binary Black Hole Mass Evolution from GWTC-4.0 Gravitational Wave Catalog</a></h4>
+                        <div class="authors"><b>S. Afroz</b>, S. Mukherjee</div>
+                        <div class="venue">arXiv:2509.25356</div>
+                    </div>
+                    <div class="links"><a class="feature" href="https://arxiv.org/abs/2509.25356" target="_blank">arXiv</a></div>
+                </div>
+            </section>
+
+            <!-- ================= CHAPTER 2: DELAY TIME ================= -->
+            <section id="delay" class="reveal">
+                <div class="chapter-head"><span class="ch-num">Chapter 2 · Delay times · Flagship project</span></div>
+                <h2 class="chapter-title">How long do black hole binaries take to merge?</h2>
+                <p>
+                    A binary black hole does not merge the moment its stars are born. First the two massive stars must live out their
+                    lives and collapse; then the black holes must spiral together, slowly losing orbital energy to gravitational waves.
+                    The time between the birth of the stars and the final merger is the <b>delay time</b>. It can be a few hundred million
+                    years for a tight pair or longer than the age of the Universe for a wide one, and how these delays are distributed
+                    records how the binaries were made: how close the stars were at birth, how they exchanged mass and shed their
+                    envelopes, and whether they formed in isolation or were assembled in dense star clusters.
+                </p>
+                <p>
+                    No single event reveals its delay. But the delays shape the whole population: the merger rate we observe at each
+                    redshift is the cosmic star formation history, smeared forward in time by the <b>delay time distribution</b> (DTD):
+                </p>
+                <div class="eq"><span class="md">\mathcal{R}(z) \;\propto\; \int_z^{\infty} p\big(t(z)-t(z_f)\big)\;\mathrm{SFR}(z_f)\;\Big|\frac{dt}{dz_f}\Big|\,dz_f</span></div>
+                <p>
+                    Short delays make the merger rate follow star formation closely; long delays shift mergers towards today. Measuring how
+                    the binary black hole merger rate changes with redshift therefore tells us how long the binaries took to merge, and this
+                    project reconstructs that distribution directly from the latest LIGO–Virgo–KAGRA catalogue.
+                </p>
+                <div class="callout warm">
+                    <p><b>The question:</b> what does the delay time distribution of binary black holes look like when we let the data
+                    decide its shape, and is it the same for light and heavy black holes?</p>
+                </div>
+            </section>
+
+            <section id="delay-why" class="reveal">
+                <h2><span class="num">2.1 — Beyond a power law</span>Why not just fit a power law?</h2>
+                <p>
+                    Almost every earlier constraint assumed that delay times follow a power law, <span class="m">p(t_d)\propto t_d^{\alpha}</span>
+                    above some minimum delay, and measured its slope. With GWTC-3 these studies found no evidence for anything more complex.
+                    But a power law is a strong assumption: it has the same logarithmic slope everywhere, so it cannot describe a distribution
+                    that stays flat and then falls sharply, or one that rises to a peak and declines. Binary evolution can produce such
+                    shapes, for example when several formation pathways or mass-dependent physics contribute, and a fixed formula would hide
+                    them. The aim here was to measure the shape itself.
+                </p>
+            </section>
+
+            <section id="delay-method" class="reveal">
+                <h2><span class="num">2.2 — The method</span>Testing every shape on a grid</h2>
+                <p>
+                    Instead of choosing a formula, we lay a grid over the plane of delay time and probability and evaluate every
+                    distribution that can be drawn through it.
+                </p>
+                <div class="steps-row">
+                    <div class="step-card">
+                        <div class="step-label"><b>1</b>Enumerate</div>
+                        <h4>Every candidate shape</h4>
+                        <p>Seven delay-time nodes, spaced logarithmically from 0.5 to 12 billion years (0.50, 0.85, 1.44, 2.45, 4.16, 7.07,
+                        12.0 Gyr), each take one of five probability levels spanning a factor of 100. Every combination, smoothly
+                        interpolated with a monotone spline and normalized, is one candidate DTD, a "trajectory": 5<sup>7</sup> = 78,125 in all.</p>
+                    </div>
+                    <div class="step-arrow" aria-hidden="true">→</div>
+                    <div class="step-card">
+                        <div class="step-label"><b>2</b>Predict</div>
+                        <h4>From delays to detections</h4>
+                        <p>Each trajectory is convolved with the star formation history to give a merger rate, combined with cosmology and
+                        a fixed mass distribution into a binary black hole population, and passed through the detectors' selection
+                        function to predict what LIGO–Virgo–KAGRA should have seen.</p>
+                    </div>
+                    <div class="step-arrow" aria-hidden="true">→</div>
+                    <div class="step-card">
+                        <div class="step-label"><b>3</b>Rank</div>
+                        <h4>Bayesian evidence</h4>
+                        <p>A hierarchical Poisson likelihood compares the prediction with the observed events, including their full
+                        measurement uncertainty, and gives every trajectory a Bayesian evidence and a local merger rate. The
+                        best-supported trajectories form the reconstruction.</p>
+                    </div>
+                </div>
+                <figure class="fig" style="margin-top: 30px;">
+                    <img src="figures/gwastro/dtd_flowchart.png" alt="Flowchart of the grid-based delay time inference">
+                    <figcaption>
+                        <b>The full inference chain.</b> A delay time–probability grid generates every candidate DTD. Each is convolved with
+                        the star formation rate to give the merger rate, combined with cosmology and the fixed mass model into the intrinsic
+                        binary black hole population, and multiplied by the selection function from the LVK injection campaign to give the
+                        detectable population. The likelihood compares this with the observed GWTC-5.0 binary black holes, and the Bayesian
+                        evidence yields the DTD shape and the local merger rate.
+                    </figcaption>
+                </figure>
+                <div class="explain-grid">
+                    <div class="explain">
+                        <h4>Nothing assumed, everything tested</h4>
+                        <p>No smoothness is imposed between nodes, so the grid contains plateaus, peaks, dips and sharp cut-offs. Power
+                        laws are among its trajectories, so they can be compared on exactly the same footing.</p>
+                    </div>
+                    <div class="explain">
+                        <h4>A fixed mass model</h4>
+                        <p>The masses follow the fiducial "Broken Power Law + 2 Peaks" model of the GWTC-5.0 population analysis, with
+                        its parameters held fixed, so that the redshift information goes entirely into the delay times.</p>
+                    </div>
+                    <div class="explain">
+                        <h4>Selection effects included</h4>
+                        <p>The detection probability, for a false-alarm rate below one per year, comes from the LVK injection campaign and
+                        enters the likelihood directly, so heavier events seen to larger distances do not bias the result.</p>
+                    </div>
+                    <div class="explain">
+                        <h4>Which shapes count</h4>
+                        <p>The reconstruction shows all trajectories within a Bayes factor of 3 of the best one, and summarizes them by
+                        evidence-weighted medians and 90% intervals.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="delay-data" class="reveal">
+                <h2><span class="num">2.3 — The data</span>GWTC-5.0, in two mass bins</h2>
+                <p>
+                    We used the cumulative <b>GWTC-5.0</b> catalogue, which includes all events from GWTC-2.1, GWTC-3 and GWTC-4.0 together
+                    with the second part of the fourth observing run, keeping the binary black holes detected with a false-alarm rate below
+                    one per year in at least one search. To ask whether the delays depend on mass, we split the population by the mass of
+                    the heavier black hole into <b>20–40 M☉</b> and <b>40–100 M☉</b>, a boundary chosen so that both bins have similar
+                    statistical power, and reconstructed the DTD of each bin independently. Each event contributes to a bin in proportion
+                    to how much of its posterior falls inside it.
+                </p>
+            </section>
+
+            <section id="delay-sfr" class="reveal">
+                <h2><span class="num">2.4 — Star formation</span>Three histories of star formation</h2>
+                <div class="split">
+                    <div class="split-text">
+                        <p>
+                            The delay times are only half of the convolution; the other half is when the progenitor stars formed. Not all
+                            star formation makes binary black holes equally well: metal-rich stars lose much of their mass to winds, so
+                            massive black holes form mostly from <b>metal-poor stars</b>, which were more common in the early Universe.
+                        </p>
+                        <p>
+                            We therefore repeated the full analysis for three star formation histories: the standard, metallicity-averaged
+                            <b>Madau–Dickinson</b> model, and two observation-based histories that keep only star formation above or below
+                            one-tenth of the solar metallicity. The high-metallicity history closely follows Madau–Dickinson; the
+                            low-metallicity one rises far more steeply towards the early Universe. Comparing the three shows how much the
+                            inferred delays depend on where the stars were born.
+                        </p>
+                    </div>
+                    <figure class="fig">
+                        <img src="figures/gwastro/dtd_sfrd.png" alt="Normalized star formation rate densities used in the analysis">
+                        <figcaption>
+                            <b>Where the progenitor stars were born.</b> Star formation rate density versus redshift, normalized to today.
+                            Black: Madau–Dickinson. Solid coloured lines: star formation above one-tenth of solar metallicity, which tracks
+                            Madau–Dickinson closely. Dashed lines: star formation below it, which rises far more steeply and stays high to
+                            redshift 6–8. The three colours are the moderate, high- and low-metallicity variants of the observational model;
+                            the moderate one is used in the analysis.
+                        </figcaption>
+                    </figure>
+                </div>
+            </section>
+
+            <section id="delay-results" class="reveal">
+                <h2><span class="num">2.5 — Results</span>A plateau, then a steep fall after a few billion years</h2>
+                <p>
+                    In both mass bins and for all three star formation histories, the data favour the same overall shape: an
+                    <b>extended plateau</b> of delay times up to about 2–3 billion years, a maximum at intermediate delays, and a
+                    <b>steep decline</b> towards the longest delays. For the Madau–Dickinson and high-metallicity histories, the median
+                    DTD peaks at about <b>2.4 Gyr</b>, is above half its maximum from about 1.3 to 3.1 Gyr, and falls by a factor of about
+                    <b>80</b> between the maximum and 7 Gyr. With the low-metallicity history, the support concentrates more sharply,
+                    with the maximum at about <b>4.1 Gyr</b>.
+                </p>
+                <div class="fig" data-tabs style="margin: 30px 0;">
+                    <figure class="fig" style="margin:0;">
+                        <div class="tabs" role="tablist">
+                            <button role="tab" aria-selected="true">Madau–Dickinson</button>
+                            <button role="tab" aria-selected="false">High metallicity (Z &gt; 0.1 Z☉)</button>
+                            <button role="tab" aria-selected="false">Low metallicity (Z &lt; 0.1 Z☉)</button>
+                        </div>
+                        <div class="tab-panel"><div class="fig-row" style="padding:0;border:0;box-shadow:none;">
+                            <img src="figures/gwastro/dtd_20-40_MDSFR.png" alt="Delay time distributions, 20–40 solar masses, Madau–Dickinson">
+                            <img src="figures/gwastro/dtd_40-100_MDSFR.png" alt="Delay time distributions, 40–100 solar masses, Madau–Dickinson">
+                        </div></div>
+                        <div class="tab-panel" hidden><div class="fig-row" style="padding:0;border:0;box-shadow:none;">
+                            <img src="figures/gwastro/dtd_20-40_HighMet.png" alt="Delay time distributions, 20–40 solar masses, High metallicity (Z &gt; 0.1 Z☉)">
+                            <img src="figures/gwastro/dtd_40-100_HighMet.png" alt="Delay time distributions, 40–100 solar masses, High metallicity (Z &gt; 0.1 Z☉)">
+                        </div></div>
+                        <div class="tab-panel" hidden><div class="fig-row" style="padding:0;border:0;box-shadow:none;">
+                            <img src="figures/gwastro/dtd_20-40_LowMet.png" alt="Delay time distributions, 20–40 solar masses, Low metallicity (Z &lt; 0.1 Z☉)">
+                            <img src="figures/gwastro/dtd_40-100_LowMet.png" alt="Delay time distributions, 40–100 solar masses, Low metallicity (Z &lt; 0.1 Z☉)">
+                        </div></div>
+                        <figcaption>
+                            <b>The reconstructed delay time distributions.</b> Every trajectory within a Bayes factor of 3 of the best one, for
+                            20–40 M☉ (left) and 40–100 M☉ (right), coloured by Bayesian evidence from purple to yellow; the dashed red curve is
+                            the single best trajectory. Switch between the star formation histories with the buttons. The well-measured
+                            feature is the slope from intermediate to long delays, where the trajectories agree. The wide scatter below about
+                            1 Gyr shows that short delays are not constrained: the data reach only redshift ~1.5, below the peak of star
+                            formation at redshift ~2, so short delays "fit anywhere". Jumps between neighbouring nodes are an artefact of
+                            the discrete grid.
+                        </figcaption>
+                    </figure>
+                </div>
+                <p>
+                    Convolving these delays with star formation gives the merger rate across cosmic time. In every case it rises from its
+                    local value to a <b>peak near redshift 1</b>, below the peak of star formation at redshift ~1.8, exactly as delays of a
+                    few billion years imply, and then falls. For the Madau–Dickinson history the lighter bin rises from about
+                    <b>24</b> to a peak of about <b>114</b> mergers per cubic gigaparsec per year at redshift 1; the heavier bin starts
+                    from about <b>13</b> and peaks near <b>66</b> at redshift 1.1. Across all three histories the best-fit local rates are
+                    <b>19–25</b> and <b>9–13 Gpc⁻³ yr⁻¹</b> for the lighter and heavier bin. The low-metallicity history produces by far
+                    the sharpest peak, about 11–12 times the local rate.
+                </p>
+                <div class="fig" data-tabs style="margin: 30px 0;">
+                    <figure class="fig" style="margin:0;">
+                        <div class="tabs" role="tablist">
+                            <button role="tab" aria-selected="true">Madau–Dickinson</button>
+                            <button role="tab" aria-selected="false">High metallicity (Z &gt; 0.1 Z☉)</button>
+                            <button role="tab" aria-selected="false">Low metallicity (Z &lt; 0.1 Z☉)</button>
+                        </div>
+                        <div class="tab-panel"><div class="fig-row" style="padding:0;border:0;box-shadow:none;">
+                            <img src="figures/gwastro/rz_20-40_MDSFR.png" alt="Merger rate, 20–40 solar masses, Madau–Dickinson">
+                            <img src="figures/gwastro/rz_40-100_MDSFR.png" alt="Merger rate, 40–100 solar masses, Madau–Dickinson">
+                        </div></div>
+                        <div class="tab-panel" hidden><div class="fig-row" style="padding:0;border:0;box-shadow:none;">
+                            <img src="figures/gwastro/rz_20-40_HighMet.png" alt="Merger rate, 20–40 solar masses, High metallicity (Z &gt; 0.1 Z☉)">
+                            <img src="figures/gwastro/rz_40-100_HighMet.png" alt="Merger rate, 40–100 solar masses, High metallicity (Z &gt; 0.1 Z☉)">
+                        </div></div>
+                        <div class="tab-panel" hidden><div class="fig-row" style="padding:0;border:0;box-shadow:none;">
+                            <img src="figures/gwastro/rz_20-40_LowMet.png" alt="Merger rate, 20–40 solar masses, Low metallicity (Z &lt; 0.1 Z☉)">
+                            <img src="figures/gwastro/rz_40-100_LowMet.png" alt="Merger rate, 40–100 solar masses, Low metallicity (Z &lt; 0.1 Z☉)">
+                        </div></div>
+                        <figcaption>
+                            <b>The merger rate these delays imply.</b> The binary black hole merger rate density versus redshift for the same
+                            trajectories, in the 20–40 M☉ (left) and 40–100 M☉ (right) bins; the red curve is the best trajectory. Both bins
+                            rise to a peak near redshift 1, and the heavier bin starts from a lower local rate. Note the different vertical
+                            scales.
+                        </figcaption>
+                    </figure>
+                </div>
+                <p>
+                            The Bayesian evidence of all 78,125 trajectories, plotted against the local rate each one predicts, shows how
+                            strongly the data discriminate between shapes. The best trajectories sit at the lowest local rates, and the
+                            evidence falls by roughly <b>180–250 units of ln Z</b> towards the worst ones, which over-predict the observed
+                            events. The striped families come from the five probability levels at the longest-delay node, with which the
+                            local rate is strongly correlated.
+                        </p>
+                        <p>
+                            The heavier bin has fewer trajectories within a Bayes factor of 3 and a somewhat narrower interval, because its
+                            events are seen out to larger redshift and sample more of the merger-rate evolution.
+                        </p>
+                <div class="fig" data-tabs style="margin: 30px 0;">
+                        <figure class="fig" style="margin:0;">
+                            <div class="tabs" role="tablist">
+                                <button role="tab" aria-selected="true">Madau–Dickinson</button>
+                                <button role="tab" aria-selected="false">High Z</button>
+                                <button role="tab" aria-selected="false">Low Z</button>
+                            </div>
+                        <div class="tab-panel"><div class="fig-row" style="padding:0;border:0;box-shadow:none;">
+                            <img src="figures/gwastro/ev_20-40_MDSFR.png" alt="Evidence versus local rate, 20–40 solar masses, Madau–Dickinson">
+                            <img src="figures/gwastro/ev_40-100_MDSFR.png" alt="Evidence versus local rate, 40–100 solar masses, Madau–Dickinson">
+                        </div></div>
+                        <div class="tab-panel" hidden><div class="fig-row" style="padding:0;border:0;box-shadow:none;">
+                            <img src="figures/gwastro/ev_20-40_HighMet.png" alt="Evidence versus local rate, 20–40 solar masses, High metallicity (Z &gt; 0.1 Z☉)">
+                            <img src="figures/gwastro/ev_40-100_HighMet.png" alt="Evidence versus local rate, 40–100 solar masses, High metallicity (Z &gt; 0.1 Z☉)">
+                        </div></div>
+                        <div class="tab-panel" hidden><div class="fig-row" style="padding:0;border:0;box-shadow:none;">
+                            <img src="figures/gwastro/ev_20-40_LowMet.png" alt="Evidence versus local rate, 20–40 solar masses, Low metallicity (Z &lt; 0.1 Z☉)">
+                            <img src="figures/gwastro/ev_40-100_LowMet.png" alt="Evidence versus local rate, 40–100 solar masses, Low metallicity (Z &lt; 0.1 Z☉)">
+                        </div></div>
+                            <figcaption>
+                                <b>How the data rank every shape.</b> Bayesian log-evidence of all trajectories versus the local merger rate
+                                <i>R</i><sub>0</sub>, for 20–40 M☉ (left) and 40–100 M☉ (right), with the histogram of <i>R</i><sub>0</sub>
+                                beside each panel; the red star is the best trajectory.
+                            </figcaption>
+                        </figure>
+                    </div>
+                <figure class="fig">
+                    <img src="figures/gwastro/dtd_bands.png" alt="Delay time distribution and merger rate of the two mass bins compared">
+                    <figcaption>
+                        <b>Light and heavy black holes, side by side.</b> The evidence-weighted median (line) and 90% interval (band) of the
+                        DTD (top) and merger rate (bottom), for 20–40 M☉ (purple) and 40–100 M☉ (green), for each star formation history. The
+                        DTD bands overlap at every delay, and each median lies within the other bin's interval. The clearest difference is
+                        the amplitude of the merger rate, with fewer heavy binaries merging today.
+                    </figcaption>
+                </figure>
+                <p>
+                    Since the two bins share some events, we also compared one DTD shared by both bins with two independent ones. A shared
+                    DTD is preferred for every star formation history and bin boundary: <b>the data do not yet require different delay
+                    times for light and heavy black holes</b>. This does not rule out a mass dependence, which population-synthesis models
+                    predict; it means that today's catalogue cannot yet detect one.
+                </p>
+            </section>
+
+            <section id="delay-pl" class="reveal">
+                <h2><span class="num">2.6 — Power laws</span>The data prefer a shape a power law cannot draw</h2>
+                <p>
+                    Because power laws are themselves trajectories of the grid, the two can be compared directly. Scanning the minimum delay
+                    over the grid nodes and the slope from −6 to 0, the best grid trajectory beats the best power law in every case, by
+                    <b>Δln Z = 1.3 to 4.7</b> depending on the mass bin and star formation history. The best power laws need minimum
+                    delays of 1.4–4.2 Gyr and very steep slopes, α ≈ −3.3 to −6, and even then cannot reproduce a flat plateau followed by
+                    a sharp decline, or a rise to a peak followed by a fall. The preferred delay time distribution is not a power law.
+                </p>
+            </section>
+
+            <section id="delay-robust" class="reveal">
+                <h2><span class="num">2.7 — Robustness</span>Stress-testing the result</h2>
+                <p>
+                    A flexible method needs careful checks. We repeated the analysis while changing every choice that could plausibly drive
+                    the result.
+                </p>
+                <div class="explain-grid">
+                    <div class="explain">
+                        <h4>A coarser grid</h4>
+                        <p>Six delay nodes instead of seven over the same range reproduce every qualitative conclusion: the plateau, the
+                        decline, the merger-rate peak and the lower local rate of heavy black holes.</p>
+                    </div>
+                    <div class="explain">
+                        <h4>Shorter minimum delays</h4>
+                        <p>Starting the grid at 100 or 200 Myr instead of 0.5 Gyr changes the evidence by about one unit or less and the
+                        best local rate by under 2% for the Madau–Dickinson and high-metallicity histories. The low-metallicity result is
+                        less robust to this choice.</p>
+                    </div>
+                    <div class="explain">
+                        <h4>Lighter black holes too</h4>
+                        <p>Extending the low-mass bin down to 5 M☉ gives the same shape: a single maximum at intermediate delays and a decline
+                        by a factor of ~70–90 towards 7 Gyr, so the result holds for the bulk of the population.</p>
+                    </div>
+                    <div class="explain">
+                        <h4>Where the bins are split</h4>
+                        <p>Moving the boundary between the bins to 35 or 45 M☉ moves the DTD maximum by at most one grid node; the best-fit
+                        DTDs agree to within about one node.</p>
+                    </div>
+                    <div class="explain">
+                        <h4>The metallicity threshold</h4>
+                        <p>Changing the threshold from 0.1 to 0.05 or 0.2 Z☉ leaves the results essentially unchanged; local rates move by
+                        at most 3%.</p>
+                    </div>
+                    <div class="explain">
+                        <h4>A smooth formation efficiency</h4>
+                        <p>Replacing the hard metallicity cut with an efficiency that declines smoothly with metallicity reproduces the
+                        low-metallicity result.</p>
+                    </div>
+                </div>
+                <figure class="fig" style="margin-top: 30px;">
+                    <img src="figures/gwastro/dtd_bestfit_bins.png" alt="Best-fit delay time distributions for alternative mass bins" style="max-width: 760px; margin: 0 auto;">
+                    <figcaption>
+                        <b>The answer does not depend on how the masses are binned.</b> The best-fit DTD for the main analysis (black) compared
+                        with (a) a low-mass bin extended to 5–40 M☉, and (b, c) the low- and high-mass bins for boundaries at 35 and 45 M☉, for
+                        each star formation history. Shaded regions are the evidence-weighted 90% intervals. The curves agree to within about
+                        one grid node.
+                    </figcaption>
+                </figure>
+                <div class="callout">
+                    <p>
+                        The star formation history and the delay times enter only through their convolution, and they are strongly
+                        degenerate over the redshifts current detectors reach. The low-metallicity history gives the highest evidence, but
+                        this should not be read as a measurement of how black hole formation depends on metallicity: for any assumed
+                        history, the delays adjust so that the predicted merger rate matches the data.
+                    </p>
+                </div>
+            </section>
+
+            <section id="delay-meaning" class="reveal">
+                <h2><span class="num">2.8 — What it means</span>Delays of a few billion years</h2>
+                <p>
+                    Letting the data choose the shape, the binary black holes seen so far are best described by delays that are typically a
+                    few billion years, with a plateau up to ~2–3 Gyr and a steep cut-off beyond ~4 Gyr, a shape no single power law can
+                    capture. The merger rate rises to a peak near redshift 1, below the peak of star formation, and light and heavy black holes
+                    are so far consistent with sharing the same delays. Just as importantly, the grid approach shows clearly which parts of the
+                    distribution are measured and which are not.
+                </p>
+                <p>
+                    The main limitation today is the short-delay end of the distribution, and with it the local merger rate: to measure
+                    delays below a billion years, detectors must see beyond the peak of cosmic star formation. Future observing runs and,
+                    above all, next-generation detectors such as Cosmic Explorer and the Einstein Telescope will do exactly that, sharpening
+                    the short delays and testing whether black holes of different masses merge on different timescales, a key prediction of
+                    binary evolution models.
+                </p>
+                <div class="pub" style="margin-top: 26px;">
+                    <div>
+                        <h4><a href="https://arxiv.org/abs/2510.06352" target="_blank">Are all Binary Black Holes Detected by LIGO–Virgo–KAGRA Following the Universal Time-Delay Distributions? Probably Not.</a></h4>
+                        <div class="authors"><b>S. Afroz</b>, Navdha, S. Mukherjee</div>
+                        <div class="venue">arXiv:2510.06352</div>
+                    </div>
+                    <div class="links"><a class="feature" href="https://arxiv.org/abs/2510.06352" target="_blank">arXiv</a></div>
+                </div>
+            </section>
+
+            <!-- ================= CHAPTER 3: SPIN ================= -->
+            <section id="spin" class="reveal" style="padding-bottom: 90px;">
+                <div class="chapter-head"><span class="ch-num">Chapter 3 · Black hole spin</span></div>
+                <h2 class="chapter-title">What do black hole spins reveal?</h2>
+                <div class="soon-chapter">
+                    <div class="orb-sm"></div>
+                    <div>
+                        <h4>Details coming soon</h4>
+                        <p>
+                            How fast black holes spin, and how their spins are tilted relative to the orbit, depends on how the binary
+                            formed: isolated pairs of stars and binaries assembled in dense star clusters leave different imprints. This
+                            work is in progress, and this chapter will be added when it is ready.
+                        </p>
+                    </div>
+                </div>
+            </section>
+        </article>
+    </div>
+</div>
+
+<footer class="site-footer">
+    <div class="container">
+        <span>&copy; 2026 Samsuzzaman Afroz</span>
+        <a href="../index.html#research">← Back to all research</a>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="../assets/math.js?v=56"></script>
+<script src="../assets/site.js?v=56"></script>
 </body>
 </html>

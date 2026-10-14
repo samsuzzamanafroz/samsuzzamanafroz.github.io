@@ -3,88 +3,347 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Research Area - Samsuzzaman Afroz</title>
+    <title>Multi-Messenger Cosmology | Samsuzzaman Afroz</title>
+    <meta name="description" content="Measuring dark energy beyond the CPL parametrization with bright and dark standard sirens from Cosmic Explorer and the Einstein Telescope.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../style.css">
-    <link rel="stylesheet" href="../research-detail.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+    <link rel="stylesheet" href="../assets/site.css?v=56">
+    <script>try { if (localStorage.getItem('theme') === 'dark') document.documentElement.setAttribute('data-theme', 'dark'); } catch (e) {}</script>
 </head>
 <body>
-    <nav>
-        <ul>
-            <li><a href="../index.html#home">Home</a></li>
-            <li><a href="../index.html#about">About</a></li>
-            <li><a href="../index.html#research">Research</a></li>
-            <li><a href="../visualizations.html">Visualizations</a></li>
-            <li><a href="../index.html#skills">Skills</a></li>
-            <li><a href="../index.html#publications">Publications</a></li>
-            <li><a href="../index.html#contact">Contact</a></li>
-        </ul>
-    </nav>
 
-    <!-- Research Header -->
-    <section class="research-header">
-        <div class="container">
-            <h1>Multimessenger Cosmology</h1>
+<nav class="site-nav solid">
+    <div class="container">
+        <a class="brand" href="../index.html">S. Afroz<span>.</span></a>
+        <div class="nav-right">
+            <ul class="nav-links">
+                <li><a href="../index.html#about">About</a></li>
+                <li><a href="../index.html#research" class="active">Research</a></li>
+                <li><a href="../visualizations.html">Visualizations</a></li>
+                <li><a href="../index.html#publications">Publications</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+            </ul>
+            <button class="theme-toggle" type="button" aria-label="Switch between light and dark mode" title="Light / dark mode">
+                <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+                <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+            </button>
+            <button class="nav-toggle" aria-label="Open menu">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
         </div>
-    </section>
+    </div>
+</nav>
 
-    <!-- Main Content -->
-    <article class="research-content">
-        <div class="container">
-            <section class="intro-section">
-                <h2>Overview</h2>
+<header class="paper-hero v2">
+    <div class="container">
+        <div class="crumbs"><a href="../index.html">Home</a> / <a href="../index.html#research">Research</a> / Multi-messenger cosmology</div>
+        <div class="eyebrow">Cosmology · Standard sirens · Cosmic Explorer &amp; Einstein Telescope</div>
+        <h1>Measuring dark energy with <em>cosmic sirens</em></h1>
+        <p class="lede">
+            About 70% of the Universe is dark energy, the unknown component that makes its expansion accelerate. Whether it is
+            Einstein's cosmological constant or something that changes over cosmic time is one of the biggest open questions in
+            physics. Answering it means measuring how fast the Universe expanded at every epoch, and that needs two things for many
+            objects at once: how far away they are, and how much their light has been stretched by the expansion.
+        </p>
+        <p class="lede">
+            Merging neutron stars and black holes provide both. Their gravitational waves tell us their distance directly, with no
+            cosmic distance ladder to calibrate, and their light, or the galaxies around them, tells us their redshift. Combining
+            the two messengers turns every merger into a <b>standard siren</b>. In this work I forecast what the next generation of
+            detectors, Cosmic Explorer and the Einstein Telescope, can do with hundreds of thousands of such sirens: map the
+            expansion history and the dark energy equation of state with a precision beyond any other probe planned for the coming years.
+        </p>
+    </div>
+</header>
+
+<div class="container">
+    <div class="paper-layout v2">
+        <aside class="toc">
+            <div class="label">On this page</div>
+            <a href="#question">The question</a>
+            <a href="#sirens">Bright and dark sirens</a>
+            <a href="#population">The sirens of the future</a>
+            <a href="#expansion">Expansion history</a>
+            <a href="#eos">Beyond CPL</a>
+            <a href="#headline">How it compares</a>
+            <a href="#outlook">Why it matters</a>
+        </aside>
+
+        <article class="article v2">
+            <section id="question" class="reveal">
+                <h2><span class="num">01 — The question</span>Is dark energy constant?</h2>
+                <div class="split">
+                    <div class="split-text">
+                        <p>
+                            Dark energy is described by its <b>equation of state</b> <i>w</i>(<i>z</i>), the ratio of its pressure to its
+                            density. A cosmological constant has <i>w</i> = −1 at all times; anything else means dark energy evolves. The
+                            standard way to test this is the two-parameter CPL form, in which <i>w</i> changes linearly with the scale
+                            factor. It works well near today, but it is a strong assumption: real dark energy models, such as thawing or
+                            freezing scalar fields, can evolve in more complicated ways that CPL simply cannot represent.
+                        </p>
+                        <p>
+                            Gravitational-wave sources reach far deeper than supernovae, out to redshifts where such differences become
+                            visible. So we extended CPL with one more term, <i>w</i><sub>b</sub>, that allows curvature in the evolution,
+                            and also reconstructed <i>w</i>(<i>z</i>) without any formula at all:
+                        </p>
+                        <div class="eq"><span class="md">w(z) = w_0 + w_a\,\frac{z}{1+z} + w_b\left(\frac{z}{1+z}\right)^{2}</span></div>
+                        <p>
+                            If <i>w</i><sub>b</sub> turns out consistent with zero, the simple CPL picture is confirmed; if not, dark energy
+                            has richer dynamics than current analyses assume.
+                        </p>
+                    </div>
+                    <figure class="fig">
+                        <img src="figures/mm/TheoryPlot.png" alt="Expansion rate for different dark energy models with gravitational-wave horizons">
+                        <figcaption>
+                            <b>Different dark energy, different expansion.</b> The expansion rate, shown as <i>H</i>(<i>z</i>)/(1+<i>z</i>),
+                            for a cosmological constant (blue) and two evolving dark energy models (black and red). The shaded bands mark how
+                            far Cosmic Explorer and the Einstein Telescope can see binary neutron stars (green), neutron star–black hole
+                            binaries (pink) and binary black holes (cyan) with signal-to-noise above 20. The models separate most clearly at
+                            the redshifts these sirens reach.
+                        </figcaption>
+                    </figure>
+                </div>
+            </section>
+
+            <section id="sirens" class="reveal">
+                <h2><span class="num">02 — The method</span>Bright sirens and dark sirens</h2>
                 <p>
-                    This section will be updated soon.
+                    The distance comes from the gravitational wave itself. The redshift has to come from somewhere else, and how depends on
+                    whether the merger shines.
+                </p>
+                <div class="explain-grid">
+                    <div class="explain">
+                        <h4>Bright sirens</h4>
+                        <p>Mergers involving a neutron star (BNS and NSBH) can produce a flash of light, a kilonova or gamma-ray burst. Telescopes
+                        find the host galaxy and measure its redshift precisely, so each event gives a clean distance–redshift point.</p>
+                    </div>
+                    <div class="explain">
+                        <h4>Dark sirens</h4>
+                        <p>Binary black holes usually emit no light. Their redshifts are inferred statistically by <b>cross-correlating</b> their
+                        positions with galaxy surveys, since mergers happen in galaxies and trace the same large-scale structure.</p>
+                    </div>
+                    <div class="explain">
+                        <h4>Two kinds of galaxy survey</h4>
+                        <p>We compared the spectroscopic DESI survey, with precise redshifts up to <i>z</i> ≈ 2, and the photometric LSST survey,
+                        which reaches deeper, to <i>z</i> ≈ 3, but with less precise redshifts.</p>
+                    </div>
+                    <div class="explain">
+                        <h4>Realistic uncertainties</h4>
+                        <p>Distances come from full Bayesian parameter estimation of simulated signals, and include weak gravitational lensing,
+                        which blurs the distances of far-away sources. Only loud, "golden" events with SNR above 20 are used.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="population" class="reveal">
+                <h2><span class="num">03 — The data</span>Hundreds of thousands of sirens</h2>
+                <div class="split">
+                    <div class="split-text">
+                        <p>
+                            We simulated five years of observation with Cosmic Explorer (40 km arms) and the Einstein Telescope operating
+                            together, with a 75% duty cycle. The sources follow mass distributions and merger rates informed by the
+                            LIGO–Virgo–KAGRA catalogues, with merger times delayed from star formation.
+                        </p>
+                        <p>
+                            Even with a strict signal-to-noise threshold of 20, the network detects about <b>76,000 binary neutron stars,
+                            152,000 neutron star–black hole binaries and 180,000 binary black holes</b>, with most events near redshift 1
+                            and a long tail beyond redshift 3. It is this enormous number of distance measurements, spread across most of
+                            cosmic history, that makes precision dark energy measurements possible.
+                        </p>
+                    </div>
+                    <figure class="fig">
+                        <img src="figures/mm/GWEventPlot.png" alt="Number of simulated and detected events versus redshift">
+                        <figcaption>
+                            <b>The siren population.</b> Simulated mergers per redshift bin (grey) and those detected by Cosmic Explorer and the
+                            Einstein Telescope: binary black holes (red), neutron star–black hole binaries (blue) and binary neutron stars (black),
+                            for five years of observation. Detections peak near redshift 1.
+                        </figcaption>
+                    </figure>
+                </div>
+            </section>
+
+            <section id="expansion" class="reveal">
+                <h2><span class="num">04 — Expansion history</span>Reconstructing the expansion, without assuming a model</h2>
+                <p>
+                    First we asked what the sirens can measure without assuming any model for dark energy. We reconstructed the expansion
+                    rate <i>H</i>(<i>z</i>) and the equation of state <i>w</i>(<i>z</i>) at a set of redshift nodes, letting the data set
+                    each value freely, and compared single bright events, all bright events, and dark sirens with DESI or LSST.
+                </p>
+                <div class="fig" data-tabs style="margin: 30px 0;">
+                    <figure class="fig" style="margin:0;">
+                        <div class="tabs" role="tablist">
+                            <button role="tab" aria-selected="true">Expansion rate H(z)</button>
+                            <button role="tab" aria-selected="false">Equation of state w(z)</button>
+                        </div>
+                        <div class="tab-panel"><img src="figures/mm/HzRecon.png" alt="Model-independent reconstruction of the Hubble parameter"></div>
+                        <div class="tab-panel" hidden><img src="figures/mm/WzRecons.png" alt="Model-independent reconstruction of the dark energy equation of state"></div>
+                        <figcaption>
+                            <b>Model-independent reconstructions.</b> <i>First tab:</i> the expansion rate <i>H</i>(<i>z</i>)/(1+<i>z</i>);
+                            <i>second tab:</i> the dark energy equation of state <i>w</i>(<i>z</i>). Shaded bands are the 1σ reconstructions from
+                            a single bright event and from all bright events (BNS and NSBH), and from dark binary black hole sirens with DESI or
+                            LSST galaxies. With all bright sirens, the bands are thin enough to distinguish the dashed model curves out to
+                            redshift about 2; dark sirens add independent information, best near redshift 1.
+                        </figcaption>
+                    </figure>
+                </div>
+            </section>
+
+            <section id="eos" class="reveal">
+                <h2><span class="num">05 — Beyond CPL</span>Three numbers for dark energy, measured across redshift</h2>
+                <p>
+                    Next we fitted the extended model, inferring <i>w</i><sub>0</sub>, <i>w</i><sub>a</sub> and <i>w</i><sub>b</sub> together
+                    with the Hubble constant <i>H</i><sub>0</sub>. Measured redshift slice by redshift slice, the constraints are tightest
+                    around redshift 1 for bright sirens, where the sirens are most numerous and the evolving terms matter most, and around
+                    redshift 1.2 for dark sirens, where cross-correlation redshifts are most reliable.
+                </p>
+                <div class="fig" data-tabs style="margin: 30px 0;">
+                    <figure class="fig" style="margin:0;">
+                        <div class="tabs" role="tablist">
+                            <button role="tab" aria-selected="true">Bright sirens · across redshift</button>
+                            <button role="tab" aria-selected="false">Dark sirens · across redshift</button>
+                            <button role="tab" aria-selected="false">Bright sirens · joint fit</button>
+                            <button role="tab" aria-selected="false">Dark sirens · joint fit</button>
+                        </div>
+                        <div class="tab-panel"><img src="figures/mm/brightsirenrecon.png" alt="Bright siren constraints on w0, wa, wb versus redshift" style="max-width: 640px; margin: 0 auto;"></div>
+                        <div class="tab-panel" hidden><img src="figures/mm/darksirenrecon.png" alt="Dark siren constraints on w0, wa, wb versus redshift" style="max-width: 640px; margin: 0 auto;"></div>
+                        <div class="tab-panel" hidden><img src="figures/mm/JointPlotBrightSirenH0w0wawb.png" alt="Joint posterior of H0, w0, wa, wb from bright sirens" style="max-width: 680px; margin: 0 auto;"></div>
+                        <div class="tab-panel" hidden><img src="figures/mm/JointPlotDarkSirenH0w0wawb.png" alt="Joint posterior of H0, w0, wa, wb from dark sirens" style="max-width: 680px; margin: 0 auto;"></div>
+                        <figcaption>
+                            <b>How precisely each parameter is measured.</b> <i>Across redshift:</i> the 1σ uncertainty on <i>w</i><sub>a</sub> and
+                            <i>w</i><sub>b</sub> (top) and <i>w</i><sub>0</sub> (bottom) from the sirens in each redshift slice, for BNS and NSBH
+                            bright sirens, or binary black holes with DESI and LSST. <i>Joint fit:</i> the combined constraints on
+                            <i>H</i><sub>0</sub>, <i>w</i><sub>0</sub>, <i>w</i><sub>a</sub> and <i>w</i><sub>b</sub> from all detected events;
+                            dashed blue lines are the true values. Neutron star–black hole binaries do best, since they are more numerous and
+                            louder than binary neutron stars.
+                        </figcaption>
+                    </figure>
+                </div>
+                <div class="table-wrap">
+                    <table class="results" style="min-width: 620px;">
+                        <thead>
+                            <tr><th>1σ uncertainty (fixed H<sub>0</sub>)</th><th>BNS</th><th>NSBH</th><th>BBH × DESI</th><th>BBH × LSST</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td colspan="5" style="font-weight:600;">Standard CPL (<i>w</i><sub>b</sub> = 0)</td></tr>
+                            <tr class="hl"><td>w<sub>0</sub></td><td>± 0.003</td><td>± 0.002</td><td>± 0.05</td><td>± 0.06</td></tr>
+                            <tr class="hl"><td>w<sub>a</sub></td><td>± 0.010</td><td>± 0.006</td><td>± 0.18</td><td>± 0.23</td></tr>
+                            <tr><td colspan="5" style="font-weight:600;">Extended model (<i>w</i><sub>b</sub> free)</td></tr>
+                            <tr class="hl"><td>w<sub>0</sub></td><td>± 0.010</td><td>± 0.006</td><td>± 0.19</td><td>± 0.24</td></tr>
+                            <tr class="hl"><td>w<sub>a</sub></td><td>± 0.080</td><td>± 0.049</td><td>± 1.5</td><td>± 1.9</td></tr>
+                            <tr class="hl"><td>w<sub>b</sub></td><td>± 0.117</td><td>± 0.072</td><td>± 2.2</td><td>± 2.7</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p style="font-size: .95rem; color: var(--muted);">
+                    Forecast 1σ uncertainties from all detected events in five years of Cosmic Explorer + Einstein Telescope observation, with
+                    <i>H</i><sub>0</sub> fixed to 67.4 km s<sup>−1</sup> Mpc<sup>−1</sup>, around a cosmological constant. Bright sirens
+                    assume every neutron star merger has an observed counterpart.
                 </p>
             </section>
 
-            <section class="content-section">
-                <h2>Current Challenges</h2>
-                <p>This part will be updated soon.</p>
-
-            </section>
-
-            <section class="content-section">
-                <h2>My Research Contributions</h2>
-                <p>This part will be updated soon.</p>
-            </section>
-
-
-            <section class="content-section">
-                <h2>Future Prospects</h2>
-                <p>This part will be updated soon.</p>
-            </section>
-
-            <section class="related-publications">
-                <h2>Related Publications</h2>
-                <!-- <div class="pub-list">
-                    <div class="pub-item">
-                        <h3>Multimessenger cosmology with LIGO-Virgo-KAGRA observations and DESI galaxies</h3>
-                        <p>S. Afroz, S. Mukherjee | arXiv:2407.09262</p>
-                        <a href="https://arxiv.org/abs/2407.09262" target="_blank" class="btn-link">Read Paper →</a>
+            <section id="headline" class="reveal">
+                <h2><span class="num">06 — How it compares</span>An order of magnitude beyond other probes</h2>
+                <div class="split wide-fig">
+                    <div class="split-text">
+                        <p>
+                            Putting the CPL constraints next to the forecasts for Euclid, DESI and the Roman Space Telescope (WFIRST) shows
+                            the headline result: <b>bright standard sirens can measure dark energy with uncertainties up to an order of
+                            magnitude smaller</b> than these surveys. Even with the extra freedom of <i>w</i><sub>b</sub>, neutron star–black
+                            hole sirens alone pin down <i>w</i><sub>0</sub> to about 0.006, <i>w</i><sub>a</sub> to about 0.05 and
+                            <i>w</i><sub>b</sub> to about 0.07.
+                        </p>
+                        <p>
+                            The key ingredient is the light. Not every neutron star merger will be seen by telescopes, so we repeated the
+                            analysis with 1%, 10%, 50% and 100% of mergers having a detected counterpart. The constraints tighten steadily
+                            as the fraction grows, and even modest follow-up programmes deliver competitive measurements: the precision of
+                            this multi-messenger approach is set as much by electromagnetic follow-up as by the gravitational-wave detectors.
+                        </p>
+                        <p>
+                            Dark sirens are less precise, but they need no counterpart at all and remain complementary to galaxy surveys,
+                            with DESI performing better at low redshift and LSST taking over at higher redshift.
+                        </p>
                     </div>
-                    <div class="pub-item">
-                        <h3>A Model-independent Precision Test of General Relativity using LISA Bright Standard Sirens</h3>
-                        <p>S. Afroz, S. Mukherjee | arXiv:2406.08791</p>
-                        <a href="https://arxiv.org/abs/2406.08791" target="_blank" class="btn-link">Read Paper →</a>
+                    <figure class="fig">
+                        <img src="figures/mm/SurveyPlot.png" alt="Forecast dark energy constraints from sirens compared with other surveys">
+                        <figcaption>
+                            <b>Sirens against the other dark energy probes.</b> Forecast 1σ constraints on <i>w</i><sub>0</sub> (top) and
+                            <i>w</i><sub>a</sub> (bottom) from DESI, Euclid and WFIRST compared with gravitational-wave sirens: BNS and NSBH
+                            bright sirens and binary black holes cross-correlated with DESI or LSST. For bright sirens, the shading from light to
+                            dark shows 1%, 10%, 50% and 100% of mergers with a detected counterpart. Values assume <i>H</i><sub>0</sub> = 67.4
+                            km s<sup>−1</sup> Mpc<sup>−1</sup> and <i>w</i><sub>b</sub> = 0.
+                        </figcaption>
+                    </figure>
+                </div>
+                <div class="split rev">
+                    <div class="split-text">
+                        <p>
+                            Precision on the parameters translates into the ability to tell dark energy models apart. A useful diagnostic is
+                            how fast the equation of state changes with redshift, d<i>w</i>/d log <i>z</i>. For a cosmological constant it is
+                            zero; for evolving models it rises and peaks at a redshift that depends on the model. With bright sirens, the
+                            predictions for different models are cleanly separated, with the smallest uncertainties around redshift 1, exactly
+                            where the sirens are most numerous.
+                        </p>
                     </div>
-                </div> -->
+                    <figure class="fig">
+                        <img src="figures/mm/logplot.png" alt="Rate of change of the dark energy equation of state versus redshift">
+                        <figcaption>
+                            <b>Telling dark energy models apart.</b> The rate of change of the equation of state, d<i>w</i>/d log <i>z</i>, for a
+                            cosmological constant (bottom) and increasingly evolving models (upwards), with forecast uncertainties from NSBH (dark
+                            shading) and BNS (light shading) sirens. The bands barely overlap, so these models would be clearly distinguished.
+                        </figcaption>
+                    </figure>
+                </div>
             </section>
 
-            <section class="cta-section">
-                <h2>Interested in Collaborating?</h2>
+            <section id="outlook" class="reveal">
+                <h2><span class="num">07 — Why it matters</span>A new route to dark energy</h2>
                 <p>
-                    I am always happy to discuss. Feel free to reach out!
+                    Standard sirens measure distances from first principles, without the calibration chain that supernova cosmology relies on,
+                    so their constraints are both precise and robust against the systematics that worry other probes. With next-generation
+                    detectors they will reach far enough, and in large enough numbers, to test dark energy beyond the CPL parametrization:
+                    quintessence, phantom models and modifications of gravity can all be confronted with the data.
                 </p>
-                <a href="../index.html#contact" class="btn btn-primary">Get in Touch</a>
+                <p>
+                    Realizing this needs more than gravitational-wave detectors. Coordinated electromagnetic follow-up to find counterparts,
+                    and deep, wide spectroscopic galaxy surveys for dark sirens, are equally important. The same approach also extends to
+                    space-based detectors such as LISA. Multi-messenger cosmology, combining gravitational waves with light, is set to become one
+                    of the sharpest tools we have for understanding what drives the accelerating Universe.
+                </p>
             </section>
-        </div>
-    </article>
 
-    <footer>
-        <p>&copy; 2026 Samsuzzaman Afroz. All rights reserved.</p>
-    </footer>
+            <section class="related-pub reveal" style="padding-bottom: 0;">
+                <div class="side-title">Related publications</div>
+                <div class="pub">
+                    <div>
+                        <h4><a href="https://arxiv.org/abs/2412.12285" target="_blank">Multi-messenger Cosmology: A Route to Accurate Inference of Dark Energy beyond CPL Parametrization from XG Detectors</a></h4>
+                        <div class="authors"><b>S. Afroz</b>, S. Mukherjee</div>
+                        <div class="venue journal">JCAP 03 (2025) 070 · arXiv:2412.12285</div>
+                    </div>
+                    <div class="links"><a class="feature" href="https://arxiv.org/abs/2412.12285" target="_blank">arXiv</a></div>
+                </div>
+                <div class="pub">
+                    <div>
+                        <h4><a href="https://arxiv.org/abs/2507.06340" target="_blank">Illuminating Dark Energy with Bright Standard Sirens from Future Detectors</a></h4>
+                        <div class="authors"><b>S. Afroz</b>, S. Mukherjee, G. Tasinato</div>
+                        <div class="venue">arXiv:2507.06340</div>
+                    </div>
+                    <div class="links"><a class="feature" href="https://arxiv.org/abs/2507.06340" target="_blank">arXiv</a></div>
+                </div>
+            </section>
+        </article>
+    </div>
+</div>
+
+<footer class="site-footer">
+    <div class="container">
+        <span>&copy; 2026 Samsuzzaman Afroz</span>
+        <a href="../index.html#research">← Back to all research</a>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="../assets/math.js?v=56"></script>
+<script src="../assets/site.js?v=56"></script>
 </body>
 </html>

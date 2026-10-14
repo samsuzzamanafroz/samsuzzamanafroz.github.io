@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gravitational-Wave Event Catalogue | Samsuzzaman Afroz</title>
+    <meta name="description" content="Visualizations of LIGO–Virgo–KAGRA gravitational-wave detections.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/site.css?v=56">
+    <script>try { if (localStorage.getItem('theme') === 'dark') document.documentElement.setAttribute('data-theme', 'dark'); } catch (e) {}</script>
+</head>
+<body>
+
+<nav class="site-nav solid">
+    <div class="container">
+        <a class="brand" href="index.html">S. Afroz<span>.</span></a>
+        <div class="nav-right">
+            <ul class="nav-links">
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#research">Research</a></li>
+                <li><a href="visualizations.html" class="active">Visualizations</a></li>
+                <li><a href="index.html#publications">Publications</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+            <button class="theme-toggle" type="button" aria-label="Switch between light and dark mode" title="Light / dark mode">
+                <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+                <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+            </button>
+            <button class="nav-toggle" aria-label="Open menu">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+        </div>
+    </div>
+</nav>
+
+<header class="paper-hero v2">
+    <div class="container">
+        <div class="crumbs"><a href="index.html">Home</a> / Visualizations</div>
+        <div class="eyebrow">Interactive · LIGO · Virgo · KAGRA · GWTC-5.0</div>
+        <h1>Gravitational-Wave <em>Event Catalogue</em></h1>
+        <p class="lede">
+            Since the first detection, GW150914, in September 2015, the LIGO, Virgo and KAGRA detectors have observed nearly
+            four hundred mergers of black holes and neutron stars across four observing runs. This page brings every confident
+            detection in the cumulative Gravitational-Wave Transient Catalog (GWTC), up to the latest GWTC-5.0 release, into
+            one interactive explorer: how many events each run found, how their masses, spins and distances are distributed,
+            and how the population has grown as the detectors became more sensitive.
+        </p>
+        <p class="lede">
+            Filter by observing run, source type, signal strength or probability of astrophysical origin; plot any pair of
+            parameters against each other; and click any event to open its full data release on the Gravitational Wave Open
+            Science Center. The catalogue updates itself live from GWOSC, so new events appear here as soon as they are
+            published.
+        </p>
+    </div>
+</header>
+
+<div class="container" style="padding-top: 56px;">
+    <section id="catalogue" class="cat-section reveal">
+        <div id="gwtc-app" class="cat-app" data-snapshot="assets/data/gwtc.json">
+            <div class="cat-topbar">
+                <span class="cat-source" data-source><i class="off"></i>Loading catalogue…</span>
+                <span class="cat-count" data-count></span>
+            </div>
+            <div class="cat-stats" data-stats></div>
+
+            <div class="cat-body">
+                <aside class="cat-filters">
+                    <div class="cat-fgroup">
+                        <div class="cat-flabel">Search</div>
+                        <input type="search" class="cat-search" placeholder="e.g. GW150914" data-search>
+                    </div>
+                    <div class="cat-fgroup">
+                        <div class="cat-flabel">Observing run</div>
+                        <div class="chips" data-runs></div>
+                    </div>
+                    <div class="cat-fgroup">
+                        <div class="cat-flabel">Source type</div>
+                        <div class="chips" data-classes></div>
+                    </div>
+                    <div class="cat-fgroup">
+                        <div class="cat-flabel"><span>Minimum network SNR</span> <b data-minsnr-val>0</b></div>
+                        <input type="range" min="0" max="40" step="1" value="0" data-minsnr>
+                    </div>
+                    <div class="cat-fgroup">
+                        <div class="cat-flabel"><span>Minimum p<sub>astro</sub></span> <b data-minpa-val>0.00</b></div>
+                        <input type="range" min="0" max="1" step="0.05" value="0" data-minpa>
+                    </div>
+                    <button class="cat-reset" data-reset>↺ Reset filters</button>
+                    <p class="cat-note">
+                        Source type uses the median component masses, with 3 M☉ as the neutron-star limit.
+                        "No PE" marks events without published source parameters; they appear in counts and in the
+                        table but not in parameter plots.
+                    </p>
+                </aside>
+
+                <div class="cat-main">
+                    <div class="tabs cat-tabs" role="tablist">
+                        <button role="tab" data-tab="overview" aria-selected="true">Overview</button>
+                        <button role="tab" data-tab="dists" aria-selected="false">Distributions</button>
+                        <button role="tab" data-tab="explorer" aria-selected="false">Explorer</button>
+                        <button role="tab" data-tab="population" aria-selected="false">Population</button>
+                        <button role="tab" data-tab="table" aria-selected="false">Event table</button>
+                    </div>
+
+                    <div data-panel="overview">
+                        <div class="cat-grid g-over">
+                        <div class="cat-card">
+                            <div class="cat-card-head"><div><h4>Detections over time</h4><small>Cumulative count, coloured by observing run</small></div><button class="png" data-png="cumulative" title="Download PNG">PNG</button></div>
+                            <div class="cat-canvas"><canvas data-chart="cumulative"></canvas></div>
+                        </div>
+                        <div class="cat-card">
+                            <div class="cat-card-head"><div><h4>Events per observing run</h4><small>Stacked by source type</small></div><button class="png" data-png="perrun" title="Download PNG">PNG</button></div>
+                            <div class="cat-canvas"><canvas data-chart="perrun"></canvas></div>
+                        </div>
+                        <div class="cat-card">
+                            <div class="cat-card-head"><div><h4>Source types</h4></div><button class="png" data-png="classes" title="Download PNG">PNG</button></div>
+                            <div class="cat-canvas"><canvas data-chart="classes"></canvas></div>
+                        </div>
+                        </div>
+                    </div>
+
+                    <div data-panel="dists" hidden>
+                        <p class="cat-hint">Histograms are stacked by observing run (colours as in the filter panel).</p>
+                        <div class="cat-grid g-3">
+                        <div class="cat-card">
+                            <div class="cat-card-head"><div><h4>Primary mass m₁</h4></div><button class="png" data-png="h_m1" title="Download PNG">PNG</button></div>
+                            <div class="cat-canvas"><canvas data-chart="h_m1"></canvas></div>
+                        </div>
+                        <div class="cat-card">
+                            <div class="cat-card-head"><div><h4>Secondary mass m₂</h4></div><button class="png" data-png="h_m2" title="Download PNG">PNG</button></div>
+                            <div class="cat-canvas"><canvas data-chart="h_m2"></canvas></div>
+                        </div>
+                        <div class="cat-card">
+                            <div class="cat-card-head"><div><h4>Chirp mass 𝓜</h4></div><button class="png" data-png="h_mc" title="Download PNG">PNG</button></div>
+                            <div class="cat-canvas"><canvas data-chart="h_mc"></canvas></div>
+                        </div>
+                        <div class="cat-card">
+                            <div class="cat-card-head"><div><h4>Total mass M</h4></div><button class="png" data-png="h_mt" title="Download PNG">PNG</button></div>
+                            <div class="cat-canvas"><canvas data-chart="h_mt"></canvas></div>
+                        </div>
+                        <div class="cat-card">
+                            <div class="cat-card-head"><div><h4>Mass ratio q</h4></div><button class="png" data-png="h_q" title="Download PNG">PNG</button></div>
+                            <div class="cat-canvas"><canvas data-chart="h_q"></canvas></div>
+                        </div>
+                        <div class="cat-card">
+                            <div class="cat-card-head"><div><h4>Effective spin χ_eff</h4></div><button class="png" data-png="h_chi" title="Download PNG">PNG</button></div>
+                            <div class="cat-canvas"><canvas data-chart="h_chi"></canvas></div>
+                        </div>
+                        <div class="cat-card">
+                            <div class="cat-card-head"><div><h4>Luminosity distance d_L</h4></div><button class="png" data-png="h_dl" title="Download PNG">PNG</button></div>
+                            <div class="cat-canvas"><canvas data-chart="h_dl"></canvas></div>
+                        </div>
+                        <div class="cat-card">
+                            <div class="cat-card-head"><div><h4>Redshift z</h4></div><button class="png" data-png="h_z" title="Download PNG">PNG</button></div>
+                            <div class="cat-canvas"><canvas data-chart="h_z"></canvas></div>
+                        </div>
+                        <div class="cat-card">
+                            <div class="cat-card-head"><div><h4>Network SNR</h4></div><button class="png" data-png="h_snr" title="Download PNG">PNG</button></div>
+                            <div class="cat-canvas"><canvas data-chart="h_snr"></canvas></div>
+                        </div>
+                        </div>
+                    </div>
+
+                    <div data-panel="explorer" hidden>
+                        <div class="cat-controls">
+                            <label>X axis <select data-sx></select></label>
+                            <label class="chk"><input type="checkbox" data-slogx> log x</label>
+                            <label>Y axis <select data-sy></select></label>
+                            <label class="chk"><input type="checkbox" data-slogy> log y</label>
+                            <label>Colour by <select data-sc><option value="run">Observing run</option><option value="class">Source type</option></select></label>
+                        </div>
+                        <div class="cat-card">
+                            <div class="cat-card-head"><div><h4>Parameter explorer</h4><small data-explorer-n></small></div><button class="png" data-png="explorer">PNG</button></div>
+                            <div class="cat-canvas tall"><canvas data-chart="explorer"></canvas></div>
+                        </div>
+                    </div>
+
+                    <div data-panel="population" hidden>
+                        <div class="cat-grid g-2">
+                        <div class="cat-card">
+                            <div class="cat-card-head"><div><h4>Component masses</h4><small>m₂ versus m₁, by source type</small></div><button class="png" data-png="p_m1m2" title="Download PNG">PNG</button></div>
+                            <div class="cat-canvas"><canvas data-chart="p_m1m2"></canvas></div>
+                        </div>
+                        <div class="cat-card">
+                            <div class="cat-card-head"><div><h4>Chirp mass and effective spin</h4><small>by observing run</small></div><button class="png" data-png="p_mcchi" title="Download PNG">PNG</button></div>
+                            <div class="cat-canvas"><canvas data-chart="p_mcchi"></canvas></div>
+                        </div>
+                        <div class="cat-card">
+                            <div class="cat-card-head"><div><h4>How far, how heavy</h4><small>Total mass versus luminosity distance</small></div><button class="png" data-png="p_dlmt" title="Download PNG">PNG</button></div>
+                            <div class="cat-canvas"><canvas data-chart="p_dlmt"></canvas></div>
+                        </div>
+                        <div class="cat-card">
+                            <div class="cat-card-head"><div><h4>Primary mass through time</h4><small>by source type</small></div><button class="png" data-png="p_timem1" title="Download PNG">PNG</button></div>
+                            <div class="cat-canvas"><canvas data-chart="p_timem1"></canvas></div>
+                        </div>
+                        </div>
+                    </div>
+
+                    <div data-panel="table" hidden>
+                        <div class="cat-table-wrap">
+                            <table class="cat-table">
+                                <thead data-table-head></thead>
+                                <tbody data-table-body></tbody>
+                            </table>
+                        </div>
+                        <div class="cat-pager" data-pager></div>
+                    </div>
+                </div>
+            </div>
+            <p class="cat-credit">
+                Data: <a href="https://gwosc.org/eventapi/html/GWTC/" target="_blank" rel="noopener">GWTC, Gravitational Wave Open Science Center</a>
+                (LIGO Scientific Collaboration, Virgo Collaboration and KAGRA Collaboration). Medians with 90% credible intervals as released.
+            </p>
+        </div>
+    </section>
+</div>
+
+<footer class="site-footer">
+    <div class="container">
+        <span>&copy; 2026 Samsuzzaman Afroz</span>
+        <a href="index.html">← Back home</a>
+    </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="assets/catalog.js?v=56"></script>
+<script src="assets/site.js?v=56"></script>
+</body>
+</html>

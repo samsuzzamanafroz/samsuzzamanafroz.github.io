@@ -3,88 +3,384 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tests of General Relativity - Samsuzzaman Afroz</title>
+    <title>Weak-Field Tests of General Relativity | Samsuzzaman Afroz</title>
+    <meta name="description" content="A model-independent test of how gravitational waves propagate across the Universe, combining standard sirens with BAO and the CMB.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../style.css">
-    <link rel="stylesheet" href="../research-detail.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+    <link rel="stylesheet" href="../assets/site.css?v=56">
+    <script>try { if (localStorage.getItem('theme') === 'dark') document.documentElement.setAttribute('data-theme', 'dark'); } catch (e) {}</script>
 </head>
 <body>
-    <nav>
-        <ul>
-            <li><a href="../index.html#home">Home</a></li>
-            <li><a href="../index.html#about">About</a></li>
-            <li><a href="../index.html#research">Research</a></li>
-            <li><a href="../visualizations.html">Visualizations</a></li>
-            <li><a href="../index.html#skills">Skills</a></li>
-            <li><a href="../index.html#publications">Publications</a></li>
-            <li><a href="../index.html#contact">Contact</a></li>
-        </ul>
-    </nav>
 
-    <!-- Research Header -->
-    <section class="research-header">
-        <div class="container">
-            <h1>Tests of General Relativity</h1>
+<nav class="site-nav solid">
+    <div class="container">
+        <a class="brand" href="../index.html">S. Afroz<span>.</span></a>
+        <div class="nav-right">
+            <ul class="nav-links">
+                <li><a href="../index.html#about">About</a></li>
+                <li><a href="../index.html#research" class="active">Research</a></li>
+                <li><a href="../visualizations.html">Visualizations</a></li>
+                <li><a href="../index.html#publications">Publications</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+            </ul>
+            <button class="theme-toggle" type="button" aria-label="Switch between light and dark mode" title="Light / dark mode">
+                <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+                <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+            </button>
+            <button class="nav-toggle" aria-label="Open menu">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
         </div>
-    </section>
+    </div>
+</nav>
 
-    <!-- Main Content -->
-    <article class="research-content">
-        <div class="container">
-            <section class="intro-section">
-                <h2>Overview</h2>
+<header class="paper-hero v2">
+    <div class="container">
+        <div class="crumbs"><a href="../index.html">Home</a> / <a href="../index.html#research">Research</a> / Weak-field tests of GR</div>
+        <div class="eyebrow">Fundamental physics · Gravitational-wave propagation · Standard sirens</div>
+        <h1>Does gravity change how <em>waves travel</em>?</h1>
+        <p class="lede">
+            A gravitational wave from a distant merger travels for billions of years before it reaches our detectors. In Einstein's
+            General Relativity, its amplitude simply fades as the wave spreads out over an expanding Universe. But many modified theories
+            of gravity, proposed to explain dark energy, add an extra "friction" to the way gravitational waves propagate. The wave then
+            arrives weaker or stronger than General Relativity predicts, and the source appears farther or closer than it really is.
+        </p>
+        <p class="lede">
+            This line of my research builds a test of that idea that does not depend on any particular theory. It compares the distance
+            measured from the gravitational wave with the distance measured from light, built from three independent cosmological rulers,
+            and reconstructs any mismatch redshift by redshift. Across three studies, it shows how bright sirens with LIGO–Virgo–KAGRA,
+            Cosmic Explorer and the Einstein Telescope, massive black holes seen by LISA, and dark sirens combined with galaxy surveys can
+            test gravity at the percent level across most of cosmic history.
+        </p>
+    </div>
+</header>
+
+<div class="container">
+    <div class="paper-layout v2">
+        <aside class="toc">
+            <div class="label">On this page</div>
+            <a href="#idea">The idea</a>
+            <a href="#rulers">Three cosmic rulers</a>
+            <a href="#studies">The three studies</a>
+            <a href="#bright">1 · Bright sirens</a>
+            <a href="#lisa">2 · LISA</a>
+            <a href="#dark">3 · Dark sirens</a>
+            <a href="#outlook">Why it matters</a>
+        </aside>
+
+        <article class="article v2">
+            <section id="idea" class="reveal">
+                <h2><span class="num">01 — The idea</span>Two distances that should agree</h2>
                 <p>
-                    This section will be updated soon.
+                    In General Relativity, the only thing that changes a gravitational wave's amplitude on its journey is the expansion of the
+                    Universe, exactly as for light. So the <b>luminosity distance</b> we measure from a gravitational wave should be identical
+                    to the luminosity distance we would measure from light at the same redshift. In modified gravity, an extra friction term
+                    in the wave's propagation, often linked to a time-varying effective Planck mass, breaks that equality. We capture any such
+                    effect in a single function of redshift:
+                </p>
+                <div class="eq"><span class="md">D_L^{\rm GW}(z) = \mathcal{F}(z)\, D_L^{\rm EM}(z)</span></div>
+                <p>
+                    In General Relativity, <span class="m">\mathcal{F}(z) = 1</span> at every redshift. Earlier tests assumed a specific
+                    form for the deviation, usually a two-parameter power law. That form describes some theories well but misses others,
+                    for example models where the effect oscillates or behaves differently at low and high redshift. Instead, we reconstruct
+                    <span class="m">\mathcal{F}(z)</span> <b>non-parametrically</b>, in independent redshift bins, so that any departure from
+                    General Relativity, of any shape, can show up in the data.
                 </p>
             </section>
 
-            <section class="content-section">
-                <h2>Current Challenges</h2>
-                <p>This part will be updated soon.</p>
-
-            </section>
-
-            <section class="content-section">
-                <h2>My Research Contributions</h2>
-                <p>This part will be updated soon.</p>
-            </section>
-
-
-            <section class="content-section">
-                <h2>Future Prospects</h2>
-                <p>This part will be updated soon.</p>
-            </section>
-
-            <section class="related-publications">
-                <h2>Related Publications</h2>
-                <!-- <div class="pub-list">
-                    <div class="pub-item">
-                        <h3>Multimessenger cosmology with LIGO-Virgo-KAGRA observations and DESI galaxies</h3>
-                        <p>S. Afroz, S. Mukherjee | arXiv:2407.09262</p>
-                        <a href="https://arxiv.org/abs/2407.09262" target="_blank" class="btn-link">Read Paper →</a>
+            <section id="rulers" class="reveal">
+                <h2><span class="num">02 — The method</span>Three cosmic rulers</h2>
+                <div class="split">
+                    <div class="split-text">
+                        <p>
+                            The difficulty is the electromagnetic distance: computing it from a cosmological model would make the test depend
+                            on that model. We instead build it directly from data, using three length scales measured by completely different
+                            observations:
+                        </p>
+                        <ul class="clean">
+                            <li><b>The gravitational-wave distance</b> <span class="m">D_L^{\rm GW}</span>, from the amplitude of the signal.</li>
+                            <li><b>The BAO angle</b> <span class="m">\theta_{\rm BAO}(z)</span>, the angular size of the baryon acoustic ruler in
+                                the clustering of galaxies at the source's redshift.</li>
+                            <li><b>The sound horizon</b> <span class="m">r_s</span>, the physical length of that ruler, fixed by the cosmic
+                                microwave background.</li>
+                        </ul>
+                        <p>Together with the source's redshift, they give the deviation directly:</p>
+                        <div class="eq" style="margin: 18px 0;"><span class="md">\mathcal{F}(z) = \frac{D_L^{\rm GW}(z)\,\theta_{\rm BAO}(z)}{(1+z)\,r_s}</span></div>
+                        <p>
+                            If General Relativity and our picture of cosmology are right, this combination equals one at all redshifts. We
+                            infer it with a hierarchical Bayesian framework, either with the Hubble constant fixed or measured jointly with
+                            <span class="m">\mathcal{F}(z)</span>.
+                        </p>
                     </div>
-                    <div class="pub-item">
-                        <h3>A Model-independent Precision Test of General Relativity using LISA Bright Standard Sirens</h3>
-                        <p>S. Afroz, S. Mukherjee | arXiv:2406.08791</p>
-                        <a href="https://arxiv.org/abs/2406.08791" target="_blank" class="btn-link">Read Paper →</a>
-                    </div>
-                </div> -->
+                    <figure class="fig">
+                        <img src="figures/wgr/a_motivation.png" alt="Schematic of the multi-messenger test combining GW distance, BAO and CMB">
+                        <figcaption>
+                            <b>How the test fits together.</b> A merger provides the gravitational-wave distance; its kilonova (or host galaxy)
+                            provides the redshift; galaxy clustering provides the BAO angle; and the cosmic microwave background provides the
+                            sound horizon. Combining them compares the gravitational-wave distance with an electromagnetic distance built
+                            entirely from data.
+                        </figcaption>
+                    </figure>
+                </div>
             </section>
 
-            <section class="cta-section">
-                <h2>Interested in Collaborating?</h2>
+            <section id="studies" class="reveal" style="padding-bottom: 40px;">
+                <h2><span class="num">03 — The three studies</span>From today's detectors to LISA</h2>
+                <div class="chapters">
+                    <a class="chapter-card" href="#bright">
+                        <span class="ch-num">Study 1 · MNRAS 2024</span>
+                        <h3>Bright sirens on the ground</h3>
+                        <p>Neutron star mergers with an electromagnetic counterpart, from LIGO–Virgo–KAGRA to Cosmic Explorer and the Einstein Telescope.</p>
+                    </a>
+                    <a class="chapter-card" href="#lisa">
+                        <span class="ch-num">Study 2 · JCAP 2024</span>
+                        <h3>Bright sirens in space</h3>
+                        <p>Massive black hole mergers seen by LISA, testing gravity out to redshift 6.</p>
+                    </a>
+                    <a class="chapter-card" href="#dark">
+                        <span class="ch-num">Study 3 · MNRAS 2024</span>
+                        <h3>Dark sirens with galaxies</h3>
+                        <p>Binary black holes without an electromagnetic counterpart, placed in redshift by cross-correlation with DESI and LSST galaxies.</p>
+                    </a>
+                </div>
+            </section>
+
+            <!-- ================= STUDY 1 ================= -->
+            <section id="bright" class="reveal">
+                <div class="chapter-head"><span class="ch-num">Study 1 · Bright sirens with ground-based detectors</span></div>
+                <h2 class="chapter-title">Percent-level tests with neutron star mergers</h2>
                 <p>
-                    I am always happy to discuss. Feel free to reach out!
+                    The first study used <b>bright sirens</b>: binary neutron star (BNS) and neutron star–black hole (NSBH) mergers whose
+                    kilonova or gamma-ray burst pins down the redshift. We simulated realistic populations, estimated their distances with full
+                    Bayesian parameter estimation, and reconstructed <span class="m">\mathcal{F}(z)</span> for the current LIGO–Virgo–KAGRA
+                    network and for Cosmic Explorer with the Einstein Telescope, varying how many events have a detected counterpart.
                 </p>
-                <a href="../index.html#contact" class="btn btn-primary">Get in Touch</a>
+                <figure class="fig">
+                    <img src="figures/wgr/a_1sigmaerrorFz.png" alt="1-sigma error on F(z) versus redshift for LVK and CE+ET">
+                    <figcaption>
+                        <b>How precisely gravity can be tested, redshift by redshift.</b> The 1σ uncertainty band on <span class="m">\mathcal{F}(z)</span>
+                        around the General Relativity value of 1, for LIGO–Virgo–KAGRA (5 years) and Cosmic Explorer + Einstein Telescope
+                        (1 year), with one event or all events, for BNS and NSBH sirens. The shaded regions show how far each source type can be
+                        seen: BNS by LVK (green), NSBH by LVK (pink) and both with CE+ET (cyan). Next-generation detectors bring the uncertainty
+                        down to the percent level all the way to redshift 2.
+                    </figcaption>
+                </figure>
+                <div class="explain-grid">
+                    <div class="explain">
+                        <h4>Today's detectors</h4>
+                        <p>Five years of LIGO–Virgo–KAGRA can already test General Relativity to about <b>8%</b> with BNS mergers at
+                        redshift 0.075 and about <b>10%</b> with NSBH mergers at redshift 0.225.</p>
+                    </div>
+                    <div class="explain">
+                        <h4>The next generation</h4>
+                        <p>Just one year of Cosmic Explorer and the Einstein Telescope reaches about <b>1.6%</b> (BNS) and <b>2%</b> (NSBH) at
+                        redshift 0.5, with similar precision up to redshift 1.</p>
+                    </div>
+                    <div class="explain">
+                        <h4>More events help, up to a point</h4>
+                        <p>The uncertainty falls roughly as one over the square root of the number of sirens, until the precision of the BAO
+                        measurement becomes the limit.</p>
+                    </div>
+                    <div class="explain">
+                        <h4>Measuring H<sub>0</sub> at the same time</h4>
+                        <p>Fitting the Hubble constant jointly with <span class="m">\mathcal{F}(z)</span> is possible, at the cost of errors about
+                        2–2.2 times larger, since the two are partly degenerate.</p>
+                    </div>
+                </div>
+                <div class="fig" data-tabs style="margin: 30px 0 0;">
+                    <figure class="fig" style="margin:0;">
+                        <div class="tabs" role="tablist">
+                            <button role="tab" aria-selected="true">NSBH sirens</button>
+                            <button role="tab" aria-selected="false">BNS sirens</button>
+                        </div>
+                        <div class="tab-panel"><img src="figures/wgr/a_NS-BH.png" alt="F(z) precision versus number of NSBH events"></div>
+                        <div class="tab-panel" hidden><img src="figures/wgr/a_BNS.png" alt="F(z) precision versus number of BNS events"></div>
+                        <figcaption>
+                            <b>Why counterparts matter.</b> The 1σ uncertainty on <span class="m">\mathcal{F}(z)</span> at several redshifts as
+                            the number of sirens with a detected counterpart grows from one event to a quarter, a half and all of them, for LVK
+                            (5 years) and CE+ET (1 year). Solid lines fix the Hubble constant; dashed lines measure it jointly. Following up more
+                            mergers with telescopes directly sharpens the test.
+                        </figcaption>
+                    </figure>
+                </div>
             </section>
-        </div>
-    </article>
 
-    <footer>
-        <p>&copy; 2026 Samsuzzaman Afroz. All rights reserved.</p>
-    </footer>
+            <!-- ================= STUDY 2 ================= -->
+            <section id="lisa" class="reveal">
+                <div class="chapter-head"><span class="ch-num">Study 2 · Bright sirens with LISA</span></div>
+                <h2 class="chapter-title">Testing gravity out to redshift 6 from space</h2>
+                <div class="split">
+                    <div class="split-text">
+                        <p>
+                            The space-based detector <b>LISA</b>, due to launch in the mid-2030s, will hear the mergers of <b>massive black hole
+                            binaries</b>, of around a million solar masses, from across almost the whole observable Universe. These mergers are
+                            expected to happen in gas-rich galactic centres, where they can light up and reveal their host galaxy, which makes
+                            them ideal bright sirens.
+                        </p>
+                        <p>
+                            We simulated LISA's sources for three scenarios of how the first massive black holes formed (light seeds, heavy seeds,
+                            and heavy seeds with merger delays), and applied the same three-ruler test. Because LISA's signals are so loud,
+                            <b>a single event</b> is already a powerful test: <span class="m">\mathcal{F}(z)</span> can be measured to about
+                            <b>2.4% at redshift 1</b> and about <b>7.2% at redshift 6</b>.
+                        </p>
+                    </div>
+                    <figure class="fig">
+                        <img src="figures/wgr/b_motivationplot2.png" alt="Flow of measurements for the LISA bright siren test">
+                        <figcaption>
+                            <b>The LISA version of the test.</b> The merger gives the distance, its electromagnetic counterpart the redshift,
+                            galaxy clustering the BAO angle and the CMB the sound horizon; together they constrain <span class="m">\mathcal{F}(z)</span>
+                            and the Hubble constant.
+                        </figcaption>
+                    </figure>
+                </div>
+                <div class="fig" data-tabs style="margin: 30px 0;">
+                    <figure class="fig" style="margin:0;">
+                        <div class="tabs" role="tablist">
+                            <button role="tab" aria-selected="true">A single event</button>
+                            <button role="tab" aria-selected="false">The full population</button>
+                            <button role="tab" aria-selected="false">The Hubble constant</button>
+                        </div>
+                        <div class="tab-panel"><img src="figures/wgr/b_violin.png" alt="Posterior on F(z) from a single LISA event at each redshift"></div>
+                        <div class="tab-panel" hidden><img src="figures/wgr/b_1sigmaFz.png" alt="Precision on F(z) from the full LISA population"></div>
+                        <div class="tab-panel" hidden><img src="figures/wgr/b_H0plot.png" alt="Posterior on H0 from LISA bright sirens" style="max-width: 760px; margin: 0 auto;"></div>
+                        <figcaption>
+                            <b>What LISA can do.</b> <i>A single event:</i> the measurement of <span class="m">\mathcal{F}(z)</span> from one
+                            million-solar-mass merger at each redshift from 1 to 6, with the Hubble constant fixed (green) or varied (blue); the
+                            1σ precision is printed at the top. <i>The full population:</i> the 1σ band from all bright sirens in the light seed,
+                            heavy seed and heavy seed + delay scenarios. <i>The Hubble constant:</i> its measurement after marginalizing over
+                            <span class="m">\mathcal{F}(z)</span>, reaching about 1.3% with 75% of events having a counterpart. Results beyond
+                            redshift 3 are shown fainter, since planned galaxy surveys cannot yet measure the BAO scale there.
+                        </figcaption>
+                    </figure>
+                </div>
+            </section>
+
+            <!-- ================= STUDY 3 ================= -->
+            <section id="dark" class="reveal">
+                <div class="chapter-head"><span class="ch-num">Study 3 · Dark sirens and galaxy surveys</span></div>
+                <h2 class="chapter-title">No counterpart needed: binary black holes and galaxy surveys</h2>
+                <p>
+                    Most gravitational-wave detections are binary black holes, which are not expected to have an electromagnetic counterpart. The third study extended the
+                    test to these <b>dark sirens</b>. Their redshifts are recovered statistically by <b>cross-correlating</b> their sky
+                    positions with galaxies, since both trace the same large-scale structure. We compared the spectroscopic DESI survey, which
+                    gives precise redshifts, with the photometric Rubin Observatory LSST survey, which reaches deeper.
+                </p>
+                <div class="split">
+                    <figure class="fig">
+                        <img src="figures/wgr/c_zerrormnras.png" alt="Inferred versus true redshift for dark sirens">
+                        <figcaption>
+                            <b>Redshifts without a counterpart.</b> The redshift inferred by cross-correlation versus the true redshift, with
+                            uncertainty bands, for LIGO–Virgo–KAGRA and Cosmic Explorer + Einstein Telescope combined with DESI or LSST. DESI is
+                            more precise but stops near redshift 1.7; LSST carries the measurement out to redshift 2.5.
+                        </figcaption>
+                    </figure>
+                    <div class="split-text">
+                        <p>
+                            With the Hubble constant fixed, the test reaches about <b>4%</b> for Cosmic Explorer + Einstein Telescope with DESI
+                            between redshift 0.3 and 1.2 (about 5% with LSST), and about <b>9%</b> for LIGO–Virgo–KAGRA with DESI between
+                            redshift 0.3 and 0.6 (about 12% with LSST).
+                        </p>
+                        <p>
+                            The main source of uncertainty is the redshift from cross-correlation, so surveys with wider sky coverage, or several
+                            surveys combined, directly improve the test. DESI does better at low redshift, while LSST takes over at high
+                            redshift, where individual galaxy spectra are hard to obtain.
+                        </p>
+                    </div>
+                </div>
+                <div class="fig" data-tabs style="margin: 30px 0;">
+                    <figure class="fig" style="margin:0;">
+                        <div class="tabs" role="tablist">
+                            <button role="tab" aria-selected="true">Cosmic Explorer + Einstein Telescope</button>
+                            <button role="tab" aria-selected="false">LIGO–Virgo–KAGRA</button>
+                        </div>
+                        <div class="tab-panel"><img src="figures/wgr/c_violinCEET.png" alt="F(z) posteriors from dark sirens with CE+ET"></div>
+                        <div class="tab-panel" hidden><img src="figures/wgr/c_violinLVK.png" alt="F(z) posteriors from dark sirens with LVK"></div>
+                        <figcaption>
+                            <b>General Relativity tested with dark sirens.</b> The measurement of <span class="m">\mathcal{F}(z)</span> in each
+                            redshift bin, combining binary black holes with DESI (cyan) or LSST (grey), with the Hubble constant fixed and five
+                            years of observation. The dashed line is General Relativity. Next-generation detectors give tight constraints out to
+                            redshift 2.5; today's network already tests gravity to redshift 0.7.
+                        </figcaption>
+                    </figure>
+                </div>
+                <div class="split">
+                    <div class="split-text">
+                        <p>
+                            The best-measured bin, at redshift 0.425, reaches about <b>3.6%</b> for Cosmic Explorer + Einstein Telescope and
+                            <b>7.4%</b> for LIGO–Virgo–KAGRA with DESI. Measuring the Hubble constant jointly roughly doubles the uncertainty on
+                            <span class="m">\mathcal{F}(z)</span>, because the two are partly degenerate, but in return the Hubble constant itself is measured
+                            to about <b>1.1%</b> with next-generation detectors and DESI, and about <b>7%</b> with the current network, while
+                            allowing for deviations from General Relativity.
+                        </p>
+                    </div>
+                    <figure class="fig">
+                        <img src="figures/wgr/c_H0LVKCEETmnras.png" alt="Posterior on the Hubble constant from dark sirens">
+                        <figcaption>
+                            <b>The Hubble constant from dark sirens.</b> Its measurement, marginalized over <span class="m">\mathcal{F}(z)</span>,
+                            for LVK and CE+ET with DESI or LSST, over five years with a 75% duty cycle. The 1σ precision is given in the legend.
+                        </figcaption>
+                    </figure>
+                </div>
+            </section>
+
+            <section id="outlook" class="reveal">
+                <h2><span class="num">04 — Why it matters</span>A theory-independent test of gravity</h2>
+                <p>
+                    Many explanations of dark energy modify gravity on cosmological scales, and the propagation of gravitational waves is one of
+                    the cleanest places to look for them. Because <span class="m">\mathcal{F}(z)</span> is reconstructed bin by bin from
+                    independent observations, the test is sensitive to any theory that alters gravitational-wave propagation, from scalar–tensor
+                    and Horndeski theories to models with extra dimensions, without having to guess the form of the deviation in advance.
+                </p>
+                <p>
+                    The three studies show that the same idea works across the whole gravitational-wave spectrum and every kind of source:
+                    bright and dark sirens, ground and space detectors, from the nearby Universe out to redshift 6. With LIGO-India, deeper BAO
+                    measurements from DESI, Euclid and Rubin, and future detectors, it can turn the growing gravitational-wave catalogue into a
+                    percent-level map of how gravity behaves across cosmic time.
+                </p>
+            </section>
+
+            <section class="related-pub reveal" style="padding-bottom: 0;">
+                <div class="side-title">Related publications</div>
+                <div class="pub">
+                    <div>
+                        <h4><a href="https://arxiv.org/abs/2312.16292" target="_blank">A Model-independent Precision Test of General Relativity using Bright Standard Sirens from Ongoing and Upcoming Detectors</a></h4>
+                        <div class="authors"><b>S. Afroz</b>, S. Mukherjee</div>
+                        <div class="venue journal">MNRAS 530 (2024) 3812 · arXiv:2312.16292</div>
+                    </div>
+                    <div class="links"><a class="feature" href="https://arxiv.org/abs/2312.16292" target="_blank">arXiv</a></div>
+                </div>
+                <div class="pub">
+                    <div>
+                        <h4><a href="https://arxiv.org/abs/2406.08791" target="_blank">A Model-independent Precision Test of General Relativity using LISA Bright Standard Sirens</a></h4>
+                        <div class="authors"><b>S. Afroz</b>, S. Mukherjee</div>
+                        <div class="venue journal">JCAP 10 (2024) 100 · arXiv:2406.08791</div>
+                    </div>
+                    <div class="links"><a class="feature" href="https://arxiv.org/abs/2406.08791" target="_blank">arXiv</a></div>
+                </div>
+                <div class="pub">
+                    <div>
+                        <h4><a href="https://arxiv.org/abs/2407.09262" target="_blank">Prospect of Precision Cosmology and Testing General Relativity using Binary Black Holes–Galaxies Cross-correlation</a></h4>
+                        <div class="authors"><b>S. Afroz</b>, S. Mukherjee</div>
+                        <div class="venue journal">MNRAS 534 (2024) 1283 · arXiv:2407.09262</div>
+                    </div>
+                    <div class="links"><a class="feature" href="https://arxiv.org/abs/2407.09262" target="_blank">arXiv</a></div>
+                </div>
+            </section>
+        </article>
+    </div>
+</div>
+
+<footer class="site-footer">
+    <div class="container">
+        <span>&copy; 2026 Samsuzzaman Afroz</span>
+        <a href="../index.html#research">← Back to all research</a>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="../assets/math.js?v=56"></script>
+<script src="../assets/site.js?v=56"></script>
 </body>
 </html>

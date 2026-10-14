@@ -3,88 +3,460 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Research Area - Samsuzzaman Afroz</title>
+    <title>Phase Space of Compact Binaries | Samsuzzaman Afroz</title>
+    <meta name="description" content="The binary compact object phase space: a data-driven way to map gravitational-wave events onto the formation channels of black holes and neutron stars, from GWTC-3 to GWTC-5.0.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../style.css">
-    <link rel="stylesheet" href="../research-detail.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+    <link rel="stylesheet" href="../assets/site.css?v=56">
+    <script>try { if (localStorage.getItem('theme') === 'dark') document.documentElement.setAttribute('data-theme', 'dark'); } catch (e) {}</script>
 </head>
 <body>
-    <nav>
-        <ul>
-            <li><a href="../index.html#home">Home</a></li>
-            <li><a href="../index.html#about">About</a></li>
-            <li><a href="../index.html#research">Research</a></li>
-            <li><a href="../visualizations.html">Visualizations</a></li>
-            <li><a href="../index.html#skills">Skills</a></li>
-            <li><a href="../index.html#publications">Publications</a></li>
-            <li><a href="../index.html#contact">Contact</a></li>
-        </ul>
-    </nav>
 
-    <!-- Research Header -->
-    <section class="research-header">
-        <div class="container">
-            <h1>Phase Space Analysis</h1>
+<nav class="site-nav solid">
+    <div class="container">
+        <a class="brand" href="../index.html">S. Afroz<span>.</span></a>
+        <div class="nav-right">
+            <ul class="nav-links">
+                <li><a href="../index.html#about">About</a></li>
+                <li><a href="../index.html#research" class="active">Research</a></li>
+                <li><a href="../visualizations.html">Visualizations</a></li>
+                <li><a href="../index.html#publications">Publications</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+            </ul>
+            <button class="theme-toggle" type="button" aria-label="Switch between light and dark mode" title="Light / dark mode">
+                <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+                <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+            </button>
+            <button class="nav-toggle" aria-label="Open menu">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
         </div>
-    </section>
+    </div>
+</nav>
 
-    <!-- Main Content -->
-    <article class="research-content">
-        <div class="container">
-            <section class="intro-section">
-                <h2>Overview</h2>
+<header class="paper-hero v2">
+    <div class="container">
+        <div class="crumbs"><a href="../index.html">Home</a> / <a href="../index.html#research">Research</a> / Phase space of compact binaries</div>
+        <div class="eyebrow">Astrophysics · Formation channels · GWTC-3 to GWTC-5.0</div>
+        <h1>A map of how black holes <em>are born</em></h1>
+        <p class="lede">
+            Every gravitational-wave detection gives us the masses, spins and distance of two compact objects, but not their
+            history. The two black holes may have started life as a pair of massive stars, or met inside a dense star cluster after
+            earlier mergers made them heavier and faster-spinning, or they may even be primordial, formed in the first moments of the
+            Universe. Each of these stories leaves a different fingerprint, not on any one event, but on how the whole population is
+            spread across mass, spin and cosmic time.
+        </p>
+        <p class="lede">
+            The <b>binary compact object phase space</b> is a framework I developed to read those fingerprints. It places the detected
+            events and the predictions of every formation channel in the same space of masses, spins and distances, and measures how
+            well they overlap. Applied from GWTC-3 to the latest GWTC-5.0 catalogue, it has revealed where black holes formed directly
+            from stars run out, flagged events that standard channels struggle to explain, and mapped the crowded region between
+            neutron stars and black holes.
+        </p>
+    </div>
+</header>
+
+<div class="container">
+    <div class="paper-layout v2">
+        <aside class="toc">
+            <div class="label">On this page</div>
+            <a href="#question">The question</a>
+            <a href="#method">How it works</a>
+            <a href="#findings">What it has found</a>
+            <a href="#pisn">&nbsp;&nbsp;&nbsp;The mass gap</a>
+            <a href="#unusual">&nbsp;&nbsp;&nbsp;Unusual events</a>
+            <a href="#lowmass">&nbsp;&nbsp;&nbsp;Below 5 M☉</a>
+            <a href="#outlook">Looking ahead</a>
+        </aside>
+
+        <article class="article v2">
+            <section id="question" class="reveal">
+                <h2><span class="num">01 — The question</span>One event, many possible pasts</h2>
+                <div class="split">
+                    <div class="split-text">
+                        <p>
+                            A single gravitational-wave event is rarely enough to say where it came from. Its parameters are measured
+                            with large uncertainties, and several formation models can usually explain it equally well. What separates
+                            the models is not the value they predict for one event, but the <b>pattern</b> they predict for many:
+                            how mass, spin and redshift are correlated across the population.
+                        </p>
+                        <p>
+                            Black holes born from isolated massive stars are relatively light and spin slowly. Second-generation black
+                            holes, the remnants of earlier mergers, are heavier and spin fast, and because they need time to find a new
+                            partner they merge later. Primordial black holes that grow by accretion follow a mass–spin path unlike any
+                            stellar population. Plotted against the right quantities, these channels fall in <b>different regions</b>,
+                            in the same way that different kinds of stars occupy different parts of the Hertzsprung–Russell diagram.
+                            The phase space is that diagram for compact binaries.
+                        </p>
+                    </div>
+                    <figure class="fig">
+                        <img src="figures/phasespace/p1_PhaseSpace1.png" alt="Simulated binary black holes from four formation channels in phase space">
+                        <figcaption>
+                            <b>Each formation channel has its own region.</b> Simulated binary black holes in chirp mass, luminosity
+                            distance and effective spin: first-generation black holes from stellar collapse (blue), second-generation
+                            black holes from hierarchical mergers (red), binaries formed in the gas disks of active galactic nuclei
+                            (yellow), and accreting primordial black holes (cyan). Where regions overlap, additional observables such as
+                            eccentricity can separate them.
+                        </figcaption>
+                    </figure>
+                </div>
+            </section>
+
+            <section id="method" class="reveal">
+                <h2><span class="num">02 — How it works</span>Predict, observe, compare</h2>
                 <p>
-                    This section will be updated soon.
+                    The phase space turns a question about formation history into a question about geometry: how much of the observed
+                    population lies where a given channel says it should? The method has three steps.
+                </p>
+
+                <div class="steps-row">
+                    <div class="step-card">
+                        <div class="step-label"><b>1</b>Predict</div>
+                        <h4>Trajectories for every channel</h4>
+                        <p>A simple physical model of each channel's masses, spins and merger history gives the region it fills across
+                        cosmic time, its <b>trajectory</b>. Varying the model's key parameters, such as the typical mass and spin, turns each
+                        channel into a whole family of trajectories.</p>
+                    </div>
+                    <div class="step-arrow" aria-hidden="true">→</div>
+                    <div class="step-card">
+                        <div class="step-label"><b>2</b>Observe</div>
+                        <h4>The events in the same space</h4>
+                        <p>Every detected event enters with its full posterior samples. Adding them gives the <b>observed phase space</b>,
+                        which keeps each event's measurement uncertainty. It can be built from the chirp mass and effective spin, or from the
+                        mass and spin of each black hole.</p>
+                    </div>
+                    <div class="step-arrow" aria-hidden="true">→</div>
+                    <div class="step-card">
+                        <div class="step-label"><b>3</b>Compare</div>
+                        <h4>Measure the overlap</h4>
+                        <p>After removing what the detectors could not have seen, the <b>overlap</b> between each trajectory and the observed
+                        phase space measures how strongly the data support it. Evaluated event by event, it gives every event a weight for
+                        each channel.</p>
+                    </div>
+                </div>
+
+                <div class="fig-row" style="margin-top: 30px;">
+                    <figure class="fig" style="margin:0;">
+                        <img src="figures/phasespace/pisn_catalogs.png" alt="Binary black holes of GWTC-4.0 and GWTC-5.0 in the phase space">
+                        <figcaption>
+                            <b>Step 2: the observed phase space.</b> The binary black holes of GWTC-4.0 (left) and GWTC-5.0 (right) in
+                            luminosity distance, chirp mass and effective spin, with their uncertainties and coloured by mass ratio.
+                        </figcaption>
+                    </figure>
+                    <figure class="fig" style="margin:0;">
+                        <img src="figures/phasespace/pisn_components_1G.png" alt="Overlap maps for first-generation black holes">
+                        <figcaption>
+                            <b>Step 3: an overlap map.</b> Support from the data (colour) for the typical mass (horizontal) and typical spin
+                            (vertical) of first-generation black holes, for the heavier (left) and lighter (right) black hole, in GWTC-4.0
+                            (top) and GWTC-5.0 (bottom). Both catalogues favour a typical mass near 8 M☉ and low spins.
+                        </figcaption>
+                    </figure>
+                </div>
+
+                <p style="margin-top: 26px;">
+                    The approach is complementary to hierarchical population inference. Its strength is transparency: every conclusion can be
+                    traced back to the events that drive it, and new formation channels or new observables can be added simply as new
+                    trajectories in the same space.
                 </p>
             </section>
 
-            <section class="content-section">
-                <h2>Current Challenges</h2>
-                <p>This part will be updated soon.</p>
-
+            <section id="findings" class="reveal" style="padding-bottom: 40px;">
+                <h2><span class="num">03 — What it has found</span>Three questions about compact objects</h2>
+                <div class="chapters">
+                    <a class="chapter-card" href="#pisn">
+                        <span class="ch-num">GWTC-4.0 &amp; GWTC-5.0 · arXiv 2025</span>
+                        <h3>Where do stellar black holes stop?</h3>
+                        <p>First-generation black holes run out near 45 solar masses, the imprint of the pair-instability mass gap.</p>
+                    </a>
+                    <a class="chapter-card" href="#unusual">
+                        <span class="ch-num">GWTC-3 · Phys. Rev. D 2025</span>
+                        <h3>Which events look unusual?</h3>
+                        <p>Classifying about 90 events, and a shared primordial-like trajectory for GW190425 and GW230529.</p>
+                    </a>
+                    <a class="chapter-card" href="#lowmass">
+                        <span class="ch-num">GWTC-3 + O4 · MNRAS 2025</span>
+                        <h3>What lives below 5 M☉?</h3>
+                        <p>Neutron stars, their merger remnants, light black holes or primordial black holes, weighed event by event.</p>
+                    </a>
+                </div>
             </section>
 
-            <section class="content-section">
-                <h2>My Research Contributions</h2>
-                <p>This part will be updated soon.</p>
-            </section>
-
-
-            <section class="content-section">
-                <h2>Future Prospects</h2>
-                <p>This part will be updated soon.</p>
-            </section>
-
-            <section class="related-publications">
-                <h2>Related Publications</h2>
-                <!-- <div class="pub-list">
-                    <div class="pub-item">
-                        <h3>Multimessenger cosmology with LIGO-Virgo-KAGRA observations and DESI galaxies</h3>
-                        <p>S. Afroz, S. Mukherjee | arXiv:2407.09262</p>
-                        <a href="https://arxiv.org/abs/2407.09262" target="_blank" class="btn-link">Read Paper →</a>
+            <!-- ================= FINDING 1: PISN ================= -->
+            <section id="pisn" class="reveal">
+                <div class="chapter-head"><span class="ch-num">Finding 1 · GWTC-4.0 and GWTC-5.0</span></div>
+                <h2 class="chapter-title">The pair-instability mass gap</h2>
+                <p class="finding-q">Where do black holes formed directly from stars run out?</p>
+                <div class="split">
+                    <div class="split-text">
+                        <p>
+                            Stellar theory predicts a gap in the black hole mass spectrum. In the cores of very massive stars, photons
+                            become energetic enough to turn into electron–positron pairs; the core loses pressure, collapses and ignites
+                            explosively, tearing the star apart in a <b>pair-instability supernova</b> that leaves no black hole behind.
+                            Black holes formed directly from stars should therefore stop at around 40–50 solar masses.
+                        </p>
+                        <p>
+                            Heavier black holes can still form through repeated mergers, but they look different: they spin fast, and
+                            because they take time to assemble they appear mostly at lower redshift. In the phase space this produces a
+                            clear signature, with slowly spinning first-generation black holes confined below the gap and fast-spinning
+                            second-generation black holes extending into it.
+                        </p>
                     </div>
-                    <div class="pub-item">
-                        <h3>A Model-independent Precision Test of General Relativity using LISA Bright Standard Sirens</h3>
-                        <p>S. Afroz, S. Mukherjee | arXiv:2406.08791</p>
-                        <a href="https://arxiv.org/abs/2406.08791" target="_blank" class="btn-link">Read Paper →</a>
-                    </div>
-                </div> -->
-            </section>
-
-            <section class="cta-section">
-                <h2>Interested in Collaborating?</h2> 
+                    <figure class="fig">
+                        <img src="figures/phasespace/pisn_motivation.png" alt="Black holes in mass and redshift with and without a pair-instability gap">
+                        <figcaption>
+                            <b>The signature to look for.</b> With a pair-instability gap (left), slowly spinning first-generation black
+                            holes (blue) stay below it at every redshift, and only fast-spinning second-generation black holes (yellow)
+                            enter the gap, mostly at low redshift. Without a gap (right), slowly spinning black holes fill the whole mass
+                            range.
+                        </figcaption>
+                    </figure>
+                </div>
                 <p>
-                    I am always happy to discuss. Feel free to reach out!
+                    We applied the phase space to the binary black holes of GWTC-4.0 and, separately, GWTC-5.0, with two channels: first-
+                    and second-generation black holes. Turning the overlaps into mass distributions gives the key result: the
+                    <b>first-generation population is strongly suppressed above about 45 solar masses</b>, while second-generation black holes
+                    continue beyond it. Summarized by the mass below which 99.7% of the first-generation distribution lies, the scale is
+                    <b>45.5 and 45.4 M☉</b> for the heavier and lighter black hole in GWTC-4.0 and <b>45.4 and 45.3 M☉</b> in GWTC-5.0,
+                    consistent with the predicted pair-instability limit. The two catalogues tell the same story.
                 </p>
-                <a href="../index.html#contact" class="btn btn-primary">Get in Touch</a>
+                <figure class="fig">
+                    <img src="figures/phasespace/pisn_pisn.png" alt="Reconstructed first- and second-generation black hole mass distributions">
+                    <figcaption>
+                        <b>Where first-generation black holes run out.</b> Mass distributions reconstructed from the phase-space overlaps for
+                        first-generation (blue, shaded) and second-generation (black dashed) black holes, for the heavier (left) and lighter
+                        (right) black hole in GWTC-4.0 (top) and GWTC-5.0 (bottom). The orange line marks the 99.7% point of the
+                        first-generation distribution; above it, in the shaded region, only second-generation black holes contribute.
+                    </figcaption>
+                </figure>
+                <div class="split">
+                    <div class="split-text">
+                        <p>
+                            The same analysis assigns every event a weight for each channel, separately for its heavier and lighter black
+                            hole, so the population result can be traced back to the individual binaries that drive it.
+                        </p>
+                        <p>
+                            Allowing the width and the high-mass tail of the mass model to vary as well, and summing over them, gives almost
+                            the same scale, about 45.5 M☉. Because the exact number depends on the assumed shape of that tail, it is best read
+                            as a summary of where first-generation black holes run out rather than a precise measurement of the gap edge;
+                            connecting it to nuclear physics needs further modelling of metallicity, stellar winds and delay times.
+                        </p>
+                    </div>
+                    <figure class="fig">
+                        <img src="figures/phasespace/pisn_weights.png" alt="Formation-channel weights for every GWTC-5.0 binary black hole" style="max-width: 420px; margin: 0 auto;">
+                        <figcaption>
+                            <b>Every GWTC-5.0 binary black hole, classified.</b> For each event, in chronological order, the wedges show the
+                            support for first- and second-generation origin of the heavier and lighter black hole. The values are relative
+                            densities, so the two channels of one event need not add up to one.
+                        </figcaption>
+                    </figure>
+                </div>
             </section>
-        </div>
-    </article>
 
-    <footer>
-        <p>&copy; 2026 Samsuzzaman Afroz. All rights reserved.</p>
-    </footer>
+            <!-- ================= FINDING 2: GWTC-3 ================= -->
+            <section id="unusual" class="reveal">
+                <div class="chapter-head"><span class="ch-num">Finding 2 · GWTC-3</span></div>
+                <h2 class="chapter-title">Events that standard channels struggle to explain</h2>
+                <p class="finding-q">Which binaries do not fit the usual stellar pathways?</p>
+                <p>
+                    The phase space was first applied to the GWTC-3 catalogue together with GW230529, using four channels:
+                    first-generation black holes from stellar collapse, second-generation black holes from hierarchical mergers, black holes
+                    formed in the gas disks of active galactic nuclei (AGN), and primordial black holes (PBHs) that grow by accretion. For
+                    each, we mapped the support for the two parameters that shape its trajectory most.
+                </p>
+                <figure class="fig">
+                    <div class="fig-row" style="grid-template-columns: repeat(4, minmax(0,1fr));">
+                        <img src="figures/phasespace/p1_1Gresult.png" alt="Overlap map for first-generation black holes">
+                        <img src="figures/phasespace/p1_2Gresult.png" alt="Overlap map for second-generation black holes">
+                        <img src="figures/phasespace/p1_AGNresult.png" alt="Overlap map for black holes in AGN disks">
+                        <img src="figures/phasespace/p1_PBHresult.png" alt="Overlap map for primordial black holes">
+                    </div>
+                    <figcaption>
+                        <b>What GWTC-3 prefers, channel by channel.</b> From left: first-generation black holes (typical mass and spin
+                        growth), second-generation black holes (typical mass and spin), AGN-disk black holes (typical mass and spin growth),
+                        and primordial black holes (initial mass and accretion rate). Bright regions are the parameter values the observed
+                        events support.
+                    </figcaption>
+                </figure>
+                <div class="explain-grid">
+                    <div class="explain">
+                        <h4>First generation</h4>
+                        <p>A low typical mass and slowly growing spins, reflecting the many light, nearly non-spinning events in GWTC-3.</p>
+                    </div>
+                    <div class="explain">
+                        <h4>AGN disks</h4>
+                        <p>A higher typical mass with some spin growth, driven by a few heavier events with non-zero spin.</p>
+                    </div>
+                    <div class="explain">
+                        <h4>Second generation</h4>
+                        <p>Less conclusive, since its region overlaps with others; a typical mass near 16 M☉ with spins around 0.35 is
+                        mildly preferred.</p>
+                    </div>
+                    <div class="explain">
+                        <h4>Primordial black holes</h4>
+                        <p>Low support overall, with two small open regions, including initial masses of 0.1–1 M☉ with low accretion.</p>
+                    </div>
+                </div>
+                <div class="split" style="margin-top: 34px;">
+                    <div class="split-text">
+                        <p>
+                            Most events sit comfortably in the first- or second-generation channels. Six low-mass events do not:
+                            GW190425, GW190814, GW190917, GW191219, GW200115 and GW230529 have little support from any standard
+                            black hole channel.
+                        </p>
+                        <p>
+                            Two of them stand out. <b>GW190425 and GW230529 fall on the same primordial black hole trajectory</b>,
+                            consistent with a sub-solar-mass black hole that grew to its observed mass and spin by accretion. This is a
+                            hint rather than a detection, and astrophysical explanations remain open, but it shows how the phase space can
+                            single out events that deserve a closer look.
+                        </p>
+                    </div>
+                    <figure class="fig">
+                        <img src="figures/phasespace/p1_GWCatelog.png" alt="Formation-channel weights for GWTC-3 events">
+                        <figcaption>
+                            <b>Every GWTC-3 event, classified.</b> Each pie shows one event's support for first-generation (top right) and
+                            combined second-generation and AGN (left) channels. Grey pies mark the low-mass events with little support for
+                            either; the numbers on them give a primordial black hole initial mass and accretion rate that would place the
+                            event on a PBH trajectory.
+                        </figcaption>
+                    </figure>
+                </div>
+            </section>
+
+            <!-- ================= FINDING 3: LOW MASS ================= -->
+            <section id="lowmass" class="reveal">
+                <div class="chapter-head"><span class="ch-num">Finding 3 · Low-mass compact objects</span></div>
+                <h2 class="chapter-title">Between neutron stars and black holes</h2>
+                <p class="finding-q">Is a 2–5 M☉ object a heavy neutron star, a light black hole, or something else?</p>
+                <p>
+                    Below about 5 solar masses the possibilities multiply: <b>neutron stars</b>, the <b>remnants of neutron star mergers</b>,
+                    unusually <b>light black holes</b> formed when much of a star falls back after a supernova, or <b>primordial black
+                    holes</b>. We built a dedicated low-mass phase space of component mass, spin and distance and applied it to the eight
+                    events with at least one component below 5 M☉: seven from GWTC-3 and GW230529 from the fourth observing run.
+                </p>
+                <div class="split">
+                    <figure class="fig">
+                        <img src="figures/phasespace/p2_PhaseSpace3.png" alt="Phase space of low-mass compact objects">
+                        <figcaption>
+                            <b>The low-mass map.</b> Neutron stars (orange), light black holes (blue), remnants of neutron star mergers (red)
+                            and primordial black holes (cyan) in mass, spin and distance; the inset shows the mass–spin plane, where each
+                            channel has its own region.
+                        </figcaption>
+                    </figure>
+                    <figure class="fig">
+                        <img src="figures/phasespace/p2_DataCatalog.png" alt="The eight low-mass events placed in the phase space">
+                        <figcaption>
+                            <b>The events on the map.</b> The eight events in distance, component mass and spin, with uncertainties.
+                            Larger markers are the heavier components, dashed lines join the two components of a binary, and the shaded
+                            volumes are the channel regions.
+                        </figcaption>
+                    </figure>
+                </div>
+                <div class="fig" data-tabs style="margin: 30px 0;">
+                    <figure class="fig" style="margin:0;">
+                        <div class="tabs" role="tablist">
+                            <button role="tab" aria-selected="true">Neutron stars</button>
+                            <button role="tab" aria-selected="false">Merger remnants</button>
+                            <button role="tab" aria-selected="false">Light black holes</button>
+                            <button role="tab" aria-selected="false">Primordial black holes</button>
+                        </div>
+                        <div class="tab-panel"><img src="figures/phasespace/p2_NeutronStar.png" alt="Overlap map for neutron stars" style="max-width: 640px; margin: 0 auto;"></div>
+                        <div class="tab-panel" hidden><img src="figures/phasespace/p2_RemBNS.png" alt="Overlap map for merger remnants" style="max-width: 640px; margin: 0 auto;"></div>
+                        <div class="tab-panel" hidden><img src="figures/phasespace/p2_LowMassBH.png" alt="Overlap map for light black holes" style="max-width: 640px; margin: 0 auto;"></div>
+                        <div class="tab-panel" hidden><img src="figures/phasespace/p2_PBH1.png" alt="Overlap map for primordial black holes" style="max-width: 640px; margin: 0 auto;"></div>
+                        <figcaption>
+                            <b>What the low-mass events prefer.</b> <i>Neutron stars:</i> a clear peak at about 1.3 M☉ and low spin (about 0.1).
+                            <i>Merger remnants:</i> a main peak near 2.0 M☉ and a second ridge near 2.6 M☉. <i>Light black holes:</i> typical
+                            masses of 2.0–2.2 M☉ with very efficient fallback. <i>Primordial black holes:</i> largely unconstrained, since no
+                            detected component is below 1 M☉, with a narrow region near an initial mass of 0.1 M☉ and modest accretion.
+                        </figcaption>
+                    </figure>
+                </div>
+                <figure class="fig">
+                    <img src="figures/phasespace/p2_ProbEvents.png" alt="Formation-channel weights for each low-mass component">
+                    <figcaption>
+                        <b>Each low-mass object, weighed.</b> For every event, the top pie is the heavier component and the bottom pie the
+                        lighter one, split into support for neutron star, merger remnant, light black hole and primordial black hole; empty
+                        circles are components outside the 1–5 M☉ window. The heavier object in GW230529 is shared between the merger-remnant
+                        and light black hole channels, while the lighter objects in GW190814 and GW200210 lean towards light black holes and
+                        merger remnants.
+                    </figcaption>
+                </figure>
+                <p>
+                    Many of these objects remain genuinely ambiguous, and that is itself the result: with today's sensitivity and a handful
+                    of events, several pathways overlap. Tidal deformability, electromagnetic counterparts and, with next-generation
+                    detectors, the different redshift histories of each channel will break these degeneracies.
+                </p>
+            </section>
+
+            <section id="outlook" class="reveal">
+                <h2><span class="num">04 — Looking ahead</span>A map that sharpens with every event</h2>
+                <div class="split">
+                    <div class="split-text">
+                        <p>
+                            Each observing run fills in more of the phase space. Next-generation detectors such as Cosmic Explorer and the
+                            Einstein Telescope will add many thousands of events out to high redshift, where channels that look alike today
+                            separate through their different merger histories.
+                        </p>
+                        <p>
+                            The framework is built to grow with them. New formation channels, new observables such as eccentricity, tidal
+                            deformability and electromagnetic counterparts, and evolution with redshift, for example driven by the changing
+                            metallicity of stars, all enter as new dimensions or new trajectories in the same map, turning a catalogue of
+                            events into a history of how compact objects form.
+                        </p>
+                    </div>
+                    <figure class="fig">
+                        <img src="figures/phasespace/p1_1GSubPlot.png" alt="First-generation black holes with different metallicity evolution">
+                        <figcaption>
+                            <b>Sensitive to the history of stars.</b> First-generation black holes with no (left), moderate (middle) and
+                            strong (right) evolution of their typical mass with redshift, as expected from changing metallicity. The
+                            population shifts to higher masses at higher redshift, a signature the phase space can pick up as catalogues grow.
+                        </figcaption>
+                    </figure>
+                </div>
+            </section>
+
+            <section class="related-pub reveal" style="padding-bottom: 0;">
+                <div class="side-title">Related publications</div>
+                <div class="pub">
+                    <div>
+                        <h4><a href="https://arxiv.org/abs/2509.09123" target="_blank">Binary Black Hole Phase Space Discovers the Signature of Pair Instability Supernovae Mass Gap</a></h4>
+                        <div class="authors"><b>S. Afroz</b>, S. Mukherjee</div>
+                        <div class="venue">arXiv:2509.09123</div>
+                    </div>
+                    <div class="links"><a class="feature" href="https://arxiv.org/abs/2509.09123" target="_blank">arXiv</a></div>
+                </div>
+                <div class="pub">
+                    <div>
+                        <h4><a href="https://arxiv.org/abs/2505.22739" target="_blank">The Phase Space of Low-Mass Binary Compact Objects from LIGO-Virgo-KAGRA Catalog: Hints on the Chances of Different Formation Scenarios</a></h4>
+                        <div class="authors"><b>S. Afroz</b>, S. Mukherjee</div>
+                        <div class="venue journal">Mon. Not. R. Astron. Soc. 544 (2025) 4689 · arXiv:2505.22739</div>
+                    </div>
+                    <div class="links"><a class="feature" href="https://arxiv.org/abs/2505.22739" target="_blank">arXiv</a></div>
+                </div>
+                <div class="pub">
+                    <div>
+                        <h4><a href="https://arxiv.org/abs/2411.07304" target="_blank">Phase Space of Binary Black Holes from Gravitational Wave Observations to Unveil its Formation History</a></h4>
+                        <div class="authors"><b>S. Afroz</b>, S. Mukherjee</div>
+                        <div class="venue journal">Phys. Rev. D 112 (2025) 023531 · arXiv:2411.07304</div>
+                    </div>
+                    <div class="links"><a class="feature" href="https://arxiv.org/abs/2411.07304" target="_blank">arXiv</a></div>
+                </div>
+            </section>
+        </article>
+    </div>
+</div>
+
+<footer class="site-footer">
+    <div class="container">
+        <span>&copy; 2026 Samsuzzaman Afroz</span>
+        <a href="../index.html#research">← Back to all research</a>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="../assets/math.js?v=56"></script>
+<script src="../assets/site.js?v=56"></script>
 </body>
 </html>

@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dark Energy with DESI DR2 &amp; Supernovae | Samsuzzaman Afroz</title>
+    <meta name="description" content="A distance-duality consistency test between DESI DR2 BAO and Pantheon+ supernovae, and what it means for evolving dark energy.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+    <link rel="stylesheet" href="../assets/site.css?v=56">
+    <style>
+        .legend { display: flex; flex-wrap: wrap; gap: 16px; font-size: .85rem; color: var(--muted); margin-top: 6px; }
+        .legend i { display: inline-block; width: 12px; height: 12px; border-radius: 3px; margin-right: 6px; vertical-align: -1px; }
+    </style>
+    <script>try { if (localStorage.getItem('theme') === 'dark') document.documentElement.setAttribute('data-theme', 'dark'); } catch (e) {}</script>
+</head>
+<body>
+
+<nav class="site-nav solid">
+    <div class="container">
+        <a class="brand" href="../index.html">S. Afroz<span>.</span></a>
+        <div class="nav-right">
+            <ul class="nav-links">
+                <li><a href="../index.html#about">About</a></li>
+                <li><a href="../index.html#research" class="active">Research</a></li>
+                <li><a href="../visualizations.html">Visualizations</a></li>
+                <li><a href="../index.html#publications">Publications</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+            </ul>
+            <button class="theme-toggle" type="button" aria-label="Switch between light and dark mode" title="Light / dark mode">
+                <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+                <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+            </button>
+            <button class="nav-toggle" aria-label="Open menu">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+        </div>
+    </div>
+</nav>
+
+<header class="paper-hero v2">
+    <div class="container">
+        <div class="crumbs"><a href="../index.html">Home</a> / <a href="../index.html#research">Research</a> / Dark energy with DESI</div>
+        <div class="eyebrow">Cosmology · Dark energy · Consistency of datasets</div>
+        <h1>Is dark energy evolving, or are two datasets <em>disagreeing</em>?</h1>
+        <p class="lede">
+            DESI DR2 combined with type Ia supernovae seems to favour a dark energy that changes over time, a result that would
+            overturn the simplest picture of the Universe, in which dark energy is Einstein's cosmological constant. But
+            combining datasets only gives the right answer if the datasets agree with each other.
+        </p>
+        <p class="lede">
+            We checked that directly, using the cosmic distance duality relation, which links the distances measured by
+            supernovae and by baryon acoustic oscillations and must hold in any metric theory of gravity, whatever dark energy
+            is doing. The two datasets break this relation in a redshift-dependent way. That mismatch mimics evolving dark energy:
+            once we account for it, the evidence largely goes away and the data become fully consistent with a cosmological
+            constant. The lesson is broader than DESI: precise measurements are only accurate if the datasets behind them are
+            consistent.
+        </p>
+    </div>
+</header>
+
+<div class="container">
+    <div class="paper-layout v2">
+        <aside class="toc">
+            <div class="label">On this page</div>
+            <a href="#claim">The claim</a>
+            <a href="#test">The consistency test</a>
+            <a href="#data">The data</a>
+            <a href="#fits">Letting the data disagree</a>
+            <a href="#posteriors">Why the answer shifts</a>
+            <a href="#numbers">Results</a>
+            <a href="#robust">Robustness</a>
+            <a href="#meaning">What it means</a>
+        </aside>
+
+        <article class="article v2">
+            <a class="news-card reveal" href="https://phys.org/news/2026-05-evolving-dark-energy.html" target="_blank" rel="noopener">
+                <span class="news-ico">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22h14a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8M15 18h-5M10 6h8v4h-8z"/></svg>
+                </span>
+                <span class="news-text">
+                    <span class="news-label">In the news · Phys.org · 19 May 2026</span>
+                    <b>Consistency check casts doubt on evolving dark energy</b>
+                    <span class="news-sub">A Phys.org feature by Sam Jarman on this work, published in Physical Review D.</span>
+                </span>
+                <span class="news-go">Read the article ↗</span>
+            </a>
+
+            <section id="claim" class="reveal">
+                <h2><span class="num">01 — The claim</span>Precise is not the same as accurate</h2>
+                <div class="split">
+                    <div class="split-text">
+                        <p>
+                            The Dark Energy Spectroscopic Instrument (DESI) maps millions of galaxies and quasars and measures
+                            <b>baryon acoustic oscillations (BAO)</b>, a fixed ruler imprinted in the clustering of matter.
+                            Combined with the distances to type Ia supernovae (SNIa) from Pantheon+, Union or DES-Y5, the second
+                            data release (DR2) was reported to favour a dark energy whose strength changes with time, and to
+                            disfavour a simple cosmological constant at 2.8 to 4.2σ.
+                        </p>
+                        <p>
+                            Combining datasets is a powerful way to sharpen a measurement, but only if the datasets are
+                            consistent with one another. If each carries its own hidden systematic error, the combination can be
+                            <b>very precise and still wrong</b>: two slightly shifted results pull the joint answer away from
+                            the truth while making the error bars look small. So before trusting the evidence for evolving dark
+                            energy, we asked a more basic question: do DESI and the supernovae actually agree?
+                        </p>
+                    </div>
+                    <figure class="fig">
+                        <img src="figures/desi/MotivationPlot.jpg" alt="Schematic: combining two biased datasets gives a precise but inaccurate result">
+                        <figcaption>
+                            <b>How two slightly wrong datasets give one confidently wrong answer.</b> The dashed ellipses are the
+                            unbiased constraints on two parameters from two independent datasets; both contain the true value.
+                            The solid ellipses are the same measurements shifted by uncorrected systematics. Combining the shifted
+                            versions gives the tight magenta ellipse, which misses the true value. Identifying and correcting the
+                            inconsistency first gives the red ellipse, which lands back on the truth.
+                        </figcaption>
+                    </figure>
+                </div>
+            </section>
+
+            <section id="test" class="reveal">
+                <h2><span class="num">02 — The consistency test</span>The cosmic distance duality relation</h2>
+                <p>
+                    Supernovae and BAO measure distance in two different ways. A supernova is a <b>standard candle</b>: from how
+                    faint it looks we get its <b>luminosity distance</b>. BAO is a <b>standard ruler</b>: from how large the
+                    ruler appears on the sky we get the <b>angular diameter distance</b>. A result known as Etherington's
+                    reciprocity theorem says that, as long as photons travel freely and are not lost on the way, these two
+                    distances are locked together at every redshift, for <em>any</em> expansion history and any model of dark
+                    energy:
+                </p>
+                <div class="eq"><span class="md">D_L(z) = (1+z)^2\, D_A(z)</span></div>
+                <p>
+                    This makes it a clean, model-independent test of the <em>data</em>, not of the theory. If supernova and BAO
+                    distances at the same redshift break this relation, at least one dataset contains an unaccounted effect,
+                    either an observational systematic or genuinely new physics. We let the data decide by allowing a smooth,
+                    redshift-dependent mismatch between the two distances, described by a few free coefficients: an overall
+                    offset (as from a calibration difference) and terms that let the mismatch grow with redshift (as from
+                    evolving supernova properties or a calibration drift). If the datasets agree perfectly, all of these vanish.
+                </p>
+            </section>
+
+            <section id="data" class="reveal">
+                <h2><span class="num">03 — The data</span>Two rulers on one scale</h2>
+                <div class="split rev">
+                    <div class="split-text">
+                        <p>
+                            We used DESI DR2's transverse BAO measurement, which gives the angular size of the BAO ruler at
+                            several redshifts, together with the Pantheon+ compilation of <b>1701 supernovae</b> spanning
+                            redshifts from nearly zero out to 2.26. To turn the BAO ruler into a physical distance we used the
+                            sound horizon measured by Planck, <i>r</i><sub>d</sub> = 147.09 Mpc, exactly as in the published DESI
+                            analysis, so that our results can be compared directly.
+                        </p>
+                        <p>
+                            Converting both datasets to the same distance scale shows how they overlap: the supernovae cover the
+                            nearby Universe densely, while DESI anchors the distance scale at higher redshift. It is in this
+                            overlap region that a small, redshift-dependent disagreement can hide, and it is exactly this
+                            disagreement that the distance duality test is built to catch.
+                        </p>
+                    </div>
+                    <figure class="fig">
+                        <img src="figures/desi/DESI_Pantheon_Comparison.png" alt="Distance modulus versus redshift for Pantheon+ supernovae and DESI BAO">
+                        <figcaption>
+                            <b>Both datasets on a common distance scale.</b> Distance modulus (a logarithmic measure of distance)
+                            versus redshift. Red points are the 1701 Pantheon+ supernovae and blue circles are DESI DR2 BAO
+                            measurements, converted to the same scale using the Planck sound horizon <i>r</i><sub>d</sub> = 147.09 Mpc.
+                            Error bars show 1σ uncertainties. By eye the two agree well; the test in the next section asks whether
+                            they agree at the level of precision needed for dark energy.
+                        </figcaption>
+                    </figure>
+                </div>
+            </section>
+
+            <section id="fits" class="reveal">
+                <h2><span class="num">04 — Letting the data disagree</span>Three fits, one trend</h2>
+                <div class="split wide-fig">
+                    <div class="split-text">
+                        <p>
+                            We fitted a flat universe with evolving dark energy, described by the usual CPL parameters
+                            <i>w</i><sub>0</sub> (dark energy today) and <i>w</i><sub>a</sub> (how it changes with time), to DESI DR2 and
+                            Pantheon+ together, using a Planck prior on the matter density. We did this three times, each time
+                            giving the data a little more freedom to disagree:
+                        </p>
+                        <ul class="clean">
+                            <li><b>Baseline:</b> the standard analysis with no mismatch allowed. This reproduces the published DESI DR2 result.</li>
+                            <li><b>6-parameter fit:</b> adds an overall offset and a mismatch that grows linearly with redshift.</li>
+                            <li><b>7-parameter fit:</b> also allows the mismatch to curve with redshift.</li>
+                        </ul>
+                        <p>
+                            The pattern is clear. As soon as the datasets are allowed to disagree, the dark energy constraints widen
+                            and move towards the cosmological constant, <i>w</i><sub>0</sub> = −1 and <i>w</i><sub>a</sub> = 0.
+                        </p>
+                    </div>
+                    <figure class="fig">
+                        <img src="figures/desi/ContourPlot.png" alt="w0–wa posterior contours for baseline, 6-parameter and 7-parameter fits">
+                        <figcaption>
+                            <b>The headline result.</b> Constraints on the two dark energy parameters, <i>w</i><sub>0</sub> (horizontal)
+                            and <i>w</i><sub>a</sub> (vertical). A cosmological constant sits where the grey dashed lines cross, at
+                            (−1, 0). The baseline fit (filled orange) sits clearly away from it, which is the reported hint of evolving
+                            dark energy. Allowing a mismatch between supernovae and BAO (dashed orange, 6 parameters; dash-dot green,
+                            7 parameters) widens the contours and moves them onto the cosmological constant.
+                        </figcaption>
+                    </figure>
+                </div>
+            </section>
+
+            <section id="posteriors" class="reveal">
+                <h2><span class="num">05 — Why the answer shifts</span>A mismatch that looks like evolving dark energy</h2>
+                <p>
+                    The full results show why this happens. The coefficients describing the supernova–BAO mismatch are
+                    <b>strongly correlated</b> with the dark energy parameters. A small, redshift-dependent disagreement between
+                    the two datasets can therefore be absorbed into <i>w</i><sub>0</sub> and <i>w</i><sub>a</sub>, and it then looks
+                    exactly like dark energy that evolves with time. None of the mismatch coefficients is individually far from
+                    zero, but their roughly 1σ shifts all point the same way, towards a redshift-dependent contamination.
+                </p>
+                <div class="fig" data-tabs style="margin: 30px 0;">
+                    <figure class="fig" style="border:0; box-shadow:none; padding:0; margin:0;">
+                        <div class="tabs" role="tablist">
+                            <button role="tab" aria-selected="true">Baseline (4 parameters)</button>
+                            <button role="tab" aria-selected="false">With offset + linear mismatch (6)</button>
+                            <button role="tab" aria-selected="false">With curved mismatch (7)</button>
+                        </div>
+                        <div class="tab-panel"><img src="figures/desi/Baseline.png" alt="Baseline corner plot" style="max-width: 640px; margin: 0 auto;"></div>
+                        <div class="tab-panel" hidden><img src="figures/desi/6DPlot.png" alt="Six-parameter corner plot" style="max-width: 760px; margin: 0 auto;"></div>
+                        <div class="tab-panel" hidden><img src="figures/desi/7DPlot.png" alt="Seven-parameter corner plot" style="max-width: 760px; margin: 0 auto;"></div>
+                        <figcaption>
+                            <b>The full picture, parameter by parameter.</b> Each panel shows how pairs of parameters are constrained
+                            by DESI DR2 + Pantheon+ in our analysis (blue), compared with the published DESI DR2 result (red band, 1σ).
+                            The baseline reproduces DESI. In the 6- and 7-parameter fits, the extra mismatch coefficients
+                            (<i>d</i><sub>0</sub>, <i>d</i><sub>1</sub>, <i>d</i><sub>2</sub>) are clearly correlated with
+                            <i>w</i><sub>0</sub> and <i>w</i><sub>a</sub>; that correlation is what moves dark energy back towards a
+                            cosmological constant. Click any plot to see it full size.
+                        </figcaption>
+                    </figure>
+                </div>
+            </section>
+
+            <section id="numbers" class="reveal">
+                <h2><span class="num">06 — Results</span>The numbers</h2>
+                <p>
+                    All three fits agree on the matter density. Allowing the datasets to disagree moves <i>w</i><sub>0</sub> by
+                    about one standard deviation towards −1 and <i>w</i><sub>a</sub> towards zero. The support for a cosmological
+                    constant, measured by the Bayes factor at the point (−1, 0), grows about twentyfold, from 2.5 in the baseline
+                    to 54 and 49 in the extended fits.
+                </p>
+
+                <div class="chart-card">
+                    <h4>Dark energy parameters in each fit</h4>
+                    <div class="sub">Posterior median with 68% interval. The dashed line marks the cosmological constant.</div>
+                    <div class="legend">
+                        <span><i style="background:#eea25e"></i>Baseline</span>
+                        <span><i style="background:#c8642a"></i>+ (d<sub>0</sub>, d<sub>1</sub>)</span>
+                        <span><i style="background:#12957a"></i>+ (d<sub>0</sub>, d<sub>1</sub>, d<sub>2</sub>)</span>
+                    </div>
+                    <div class="chart-grid">
+                        <svg id="chart-w0" viewBox="0 0 440 215" role="img" aria-label="w0 constraints for three fits"></svg>
+                        <svg id="chart-wa" viewBox="0 0 440 215" role="img" aria-label="wa constraints for three fits"></svg>
+                    </div>
+                    <svg id="chart-bf" viewBox="0 0 900 155" role="img" aria-label="Bayes factor at the LambdaCDM point for three fits" style="margin-top: 18px;"></svg>
+                </div>
+
+                <div class="table-wrap">
+                    <table class="results">
+                        <thead>
+                            <tr>
+                                <th>Model</th><th>H<sub>0</sub></th><th>Ω<sub>m</sub></th><th>w<sub>0</sub></th><th>w<sub>a</sub></th>
+                                <th>d<sub>0</sub></th><th>d<sub>1</sub></th><th>d<sub>2</sub></th><th>χ²<sub>ν</sub></th><th>BF</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>w<sub>0</sub>w<sub>a</sub>CDM</td>
+                                <td>67.67 ± 0.51</td><td>0.31 ± 0.01</td><td>−0.83 ± 0.06</td><td>−0.62<sup>+0.29</sup><sub>−0.32</sub></td>
+                                <td>–</td><td>–</td><td>–</td><td>1.04</td><td class="bf">2.47</td>
+                            </tr>
+                            <tr class="hl">
+                                <td>+ (d<sub>0</sub>, d<sub>1</sub>)</td>
+                                <td>68.43 ± 0.76</td><td>0.31 ± 0.01</td><td>−0.92 ± 0.08</td><td>−0.44<sup>+0.29</sup><sub>−0.32</sub></td>
+                                <td>1.00 ± 0.04</td><td>0.04 ± 0.02</td><td>–</td><td>0.68</td><td class="bf">54.14</td>
+                            </tr>
+                            <tr class="hl">
+                                <td>+ (d<sub>0</sub>, d<sub>1</sub>, d<sub>2</sub>)</td>
+                                <td>68.66<sup>+0.73</sup><sub>−0.72</sub></td><td>0.31 ± 0.01</td><td>−0.92 ± 0.08</td><td>−0.49<sup>+0.33</sup><sub>−0.36</sub></td>
+                                <td>1.15 ± 0.12</td><td>−0.22<sup>+0.18</sup><sub>−0.17</sub></td><td>0.09 ± 0.06</td><td>1.06</td><td class="bf">49.47</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p style="font-size: .95rem; color: var(--muted);">
+                    H<sub>0</sub> in km s<sup>−1</sup> Mpc<sup>−1</sup>. BF = Bayes factor, from the Savage–Dickey density ratio
+                    at (<i>w</i><sub>0</sub>, <i>w</i><sub>a</sub>) = (−1, 0), with identical uniform priors
+                    <i>w</i><sub>0</sub> ∈ [−2, 1], <i>w</i><sub>a</sub> ∈ [−3, 3] in every fit. χ²<sub>ν</sub> is evaluated at the best fit.
+                </p>
+            </section>
+
+            <section id="robust" class="reveal">
+                <h2><span class="num">07 — Robustness</span>Not an artefact of our choices</h2>
+                <div class="split wide-fig">
+                    <div class="split-text">
+                        <p>
+                            A fair worry is that the result depends on how we described the mismatch, or on the value of the sound
+                            horizon we assumed. We tested both. First, we replaced our polynomial description with two very
+                            different shapes, a logarithmic and an exponential one. Second, we repeated the whole analysis with an
+                            alternative sound horizon, <i>r</i><sub>d</sub> = 136.4 Mpc.
+                        </p>
+                        <p>
+                            Changing the sound horizon mainly rescales the Hubble constant, as expected, and leaves the matter
+                            density almost unchanged. The details of the contours shift, but the conclusion does not: <b>in every
+                            case, allowing the datasets to disagree moves dark energy towards a cosmological constant</b>.
+                        </p>
+                    </div>
+                    <div class="fig" data-tabs style="margin: 0;">
+                        <figure class="fig" style="border:0; box-shadow:none; padding:0; margin:0;">
+                            <div class="tabs" role="tablist">
+                                <button role="tab" aria-selected="true">Other mismatch shapes</button>
+                                <button role="tab" aria-selected="false">Other sound horizon</button>
+                            </div>
+                            <div class="tab-panel"><img src="figures/desi/DifferentParRd147.png" alt="Posteriors for logarithmic and exponential distance-duality forms"></div>
+                            <div class="tab-panel" hidden><img src="figures/desi/DifferentParRd136.png" alt="Posteriors assuming r_d = 136.4 Mpc"></div>
+                            <figcaption>
+                                <b>Robustness checks.</b> <i>First tab:</i> results when the mismatch follows an exponential (blue) or
+                                logarithmic (green) shape instead of a polynomial, compared with DESI DR2 (red). <i>Second tab:</i> all
+                                three shapes with the alternative sound horizon <i>r</i><sub>d</sub> = 136.4 Mpc. The Hubble constant moves
+                                with the sound horizon, but dark energy moves towards (−1, 0) in every case.
+                            </figcaption>
+                        </figure>
+                    </div>
+                </div>
+            </section>
+
+            <section id="meaning" class="reveal">
+                <h2><span class="num">08 — What it means</span>Systematics, or new physics?</h2>
+                <p>
+                    A mismatch between supernova and BAO distances has two possible kinds of explanation, and they predict
+                    different things.
+                </p>
+                <div class="explain-grid">
+                    <div class="explain">
+                        <h4>Supernova systematics</h4>
+                        <p>The average properties of supernova progenitors, such as their metallicity or age, may drift slightly with
+                        redshift. Grey dust, calibration differences between the many low- and high-redshift surveys, or small errors
+                        in selection-bias corrections could all leave a smooth, redshift-dependent offset of just a few hundredths
+                        of a magnitude.</p>
+                    </div>
+                    <div class="explain">
+                        <h4>BAO and CMB systematics</h4>
+                        <p>BAO measurements depend on modelling of galaxy clustering and on the sound horizon, which is inferred from
+                        early-Universe physics. Errors there would rescale the BAO distances, although in practice BAO and CMB
+                        results agree well with each other.</p>
+                    </div>
+                    <div class="explain">
+                        <h4>New physics</h4>
+                        <p>Photons converting into axion-like particles, absorption by a dark sector, or a varying speed of light would
+                        all break the distance duality relation. But such effects would dim <em>every</em> light source in the same
+                        way, not only supernovae.</p>
+                    </div>
+                    <div class="explain">
+                        <h4>The verdict</h4>
+                        <p>Since BAO and CMB agree while supernovae stand apart, the evidence favours an <b>unaccounted
+                        supernova-specific systematic</b> over a universal new effect. Correct for it, and DESI DR2 with Pantheon+ is
+                        consistent with a cosmological constant.</p>
+                    </div>
+                </div>
+                <p style="margin-top: 26px;">
+                    As DESI, the Rubin Observatory (LSST) and JWST make distance measurements ever more precise, consistency tests
+                    like this one should be run <em>before</em> datasets are combined. Otherwise small hidden systematics can
+                    masquerade as new physics.
+                </p>
+            </section>
+
+            <section class="related-pub reveal" style="padding-bottom: 0;">
+                <div class="side-title">Related publication</div>
+                <div class="pub">
+                    <div>
+                        <h4><a href="https://arxiv.org/abs/2504.16868" target="_blank">Hint towards Inconsistency between BAO and Supernovae Dataset: The Evidence of Redshift Evolving Dark Energy from DESI DR2 is Absent</a></h4>
+                        <div class="authors"><b>S. Afroz</b>, S. Mukherjee</div>
+                        <div class="venue">Phys. Rev. D 113 (2026) 083514 · arXiv:2504.16868</div>
+                    </div>
+                    <div class="links"><a class="feature" href="https://arxiv.org/abs/2504.16868" target="_blank">arXiv</a><a href="https://phys.org/news/2026-05-evolving-dark-energy.html" target="_blank" rel="noopener">Phys.org feature</a></div>
+                </div>
+            </section>
+        </article>
+    </div>
+</div>
+
+<footer class="site-footer">
+    <div class="container">
+        <span>&copy; 2026 Samsuzzaman Afroz</span>
+        <a href="../index.html#research">← Back to all research</a>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="../assets/math.js?v=56"></script>
+<script src="../assets/site.js?v=56"></script>
+
+<script>
+// Result charts, drawn from the numbers in Table 1 of arXiv:2504.16868.
+(function () {
+    const fits = [
+        { name: 'Baseline',        color: '#eea25e', w0: [-0.83, 0.06, 0.06], wa: [-0.62, 0.29, 0.32], bf: 2.47 },
+        { name: '+ (d₀, d₁)',      color: '#c8642a', w0: [-0.92, 0.08, 0.08], wa: [-0.44, 0.29, 0.32], bf: 54.14 },
+        { name: '+ (d₀, d₁, d₂)',  color: '#12957a', w0: [-0.92, 0.08, 0.08], wa: [-0.49, 0.33, 0.36], bf: 49.47 }
+    ];
+    const NS = 'http://www.w3.org/2000/svg';
+    const el = (tag, attrs, parent, text) => {
+        const n = document.createElementNS(NS, tag);
+        for (const k in attrs) n.setAttribute(k, attrs[k]);
+        if (text !== undefined) n.textContent = text;
+        parent.appendChild(n);
+        return n;
+    };
+
+    // Horizontal interval plot for one parameter
+    function interval(svgId, key, label, lo, hi, ref, ticks) {
+        const svg = document.getElementById(svgId);
+        const L = 20, R = 425, top = 40, rowH = 40;
+        const x = v => L + (v - lo) / (hi - lo) * (R - L);
+        el('text', { x: L, y: 16, class: 'lbl' }, svg, label);
+        const axisY = top + rowH * fits.length + 6;
+        el('line', { x1: L, x2: R, y1: axisY, y2: axisY, stroke: '#d8d3c7' }, svg);
+        ticks.forEach(t => {
+            el('line', { x1: x(t), x2: x(t), y1: top - 6, y2: axisY, stroke: '#eeebe3' }, svg);
+            el('text', { x: x(t), y: axisY + 16, 'text-anchor': 'middle' }, svg, String(t).replace('-', '−'));
+        });
+        el('line', { x1: x(ref), x2: x(ref), y1: top - 10, y2: axisY, stroke: '#0a0f24', 'stroke-dasharray': '4 4', 'stroke-width': 1.3 }, svg);
+        el('text', { x: x(ref) + 6, y: top - 14 }, svg, 'ΛCDM');
+        fits.forEach((f, i) => {
+            const [m, up, dn] = f[key];
+            const y = top + 14 + i * rowH;
+            el('line', { x1: x(m - dn), x2: x(m + up), y1: y, y2: y, stroke: f.color, 'stroke-width': 5, 'stroke-linecap': 'round', opacity: .45 }, svg);
+            el('circle', { cx: x(m), cy: y, r: 6.5, fill: f.color, stroke: '#fff', 'stroke-width': 2 }, svg);
+            el('text', { x: x(m), y: y - 11, class: 'val', 'text-anchor': 'middle' }, svg, String(m).replace('-', '−'));
+        });
+    }
+    interval('chart-w0', 'w0', 'w₀', -1.1, -0.7, -1, [-1.1, -1.0, -0.9, -0.8, -0.7]);
+    interval('chart-wa', 'wa', 'wₐ', -1.2, 0.4, 0, [-1.2, -0.8, -0.4, 0, 0.4]);
+
+    // Bayes-factor bars
+    const svg = document.getElementById('chart-bf');
+    const L = 170, R = 820, max = 60;
+    el('text', { x: 0, y: 14, class: 'lbl' }, svg, 'Bayes factor at the ΛCDM point (w₀ = −1, wₐ = 0)');
+    fits.forEach((f, i) => {
+        const y = 34 + i * 38;
+        const w = (f.bf / max) * (R - L);
+        el('text', { x: L - 12, y: y + 17, 'text-anchor': 'end' }, svg, f.name);
+        el('rect', { x: L, y: y, width: R - L, height: 24, rx: 6, fill: '#f3f1ec' }, svg);
+        el('rect', { x: L, y: y, width: Math.max(w, 4), height: 24, rx: 6, fill: f.color }, svg);
+        el('text', { x: L + Math.max(w, 4) + 10, y: y + 17, class: 'val' }, svg, f.bf.toFixed(2));
+    });
+})();
+</script>
+</body>
+</html>
